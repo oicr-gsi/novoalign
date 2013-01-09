@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- $Id: build.xml 2868 2011-06-23 21:13:36Z lmose $ -->
+<project name="seqware-pipeline-bundle" basedir="." default="all">
+
+    <property name="src" value="modules"/>
+    <property name="lib" value="lib"/>
+    <property name="classes" value="classes"/>
+    <property environment="env"/>
+
+<!-- INIT -->
+    <target name="init">
+        <path id="classpath">
+            <fileset dir="${lib}">
+                <include name="**/*.jar"/>
+            </fileset>
+        </path>
+    </target>
+
+<!-- CLEAN -->
+    <target name="clean">
+        <delete dir="${classes}"/>
+    </target>
+
+<!-- COMPILE -->
+    <target name="compile" depends="compile-src"
+            description="Compile files without cleaning">
+    </target>
+
+    <target name="compile-src" depends="init" description="Compile files without cleaning">
+        <mkdir dir="${classes}"/>
+        <javac destdir="${classes}"
+               optimize="${javac.opt}"
+               debug="${javac.debug}">
+            <src path="${src}"/>
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+<!-- ALL -->
+    <target name="all" depends="compile" description="Default build target"/>
+
+</project>
+
