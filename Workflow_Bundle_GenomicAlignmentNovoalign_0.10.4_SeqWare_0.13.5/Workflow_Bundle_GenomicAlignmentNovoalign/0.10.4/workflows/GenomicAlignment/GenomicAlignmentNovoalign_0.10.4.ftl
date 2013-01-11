@@ -80,6 +80,7 @@ FIXME: need to start with BAM file rather than fastq
     <profile namespace="globus" key="jobtype">condor</profile>
     <profile namespace="globus" key="count">1</profile>
     <profile namespace="globus" key="maxmemory">2000</profile>
+    <#if queue != ""><profile namespace="globus" key="queue">${queue}</profile></#if>
 
   </job>
 
@@ -99,6 +100,7 @@ FIXME: need to start with BAM file rather than fastq
     <profile namespace="globus" key="jobtype">condor</profile>
     <profile namespace="globus" key="count">1</profile>
     <profile namespace="globus" key="maxmemory">2000</profile>
+    <#if queue != ""><profile namespace="globus" key="queue">${queue}</profile></#if>
 
   </job>
 
@@ -118,6 +120,7 @@ FIXME: need to start with BAM file rather than fastq
     <profile namespace="globus" key="jobtype">condor</profile>
     <profile namespace="globus" key="count">1</profile>
     <profile namespace="globus" key="maxmemory">2000</profile>
+    <#if queue != ""><profile namespace="globus" key="queue">${queue}</profile></#if>
 
   </job>
 
@@ -141,6 +144,16 @@ FIXME: need to start with BAM file rather than fastq
 
   </#if>
 
+  <#assign ius_accession_arr = "${ius_accession}"?split(",") />
+  <#assign ius = ius_accession_arr[input_e1_index]/>
+  <#assign sequencer_run_name_arr = "${sequencer_run_name}"?split(",") />
+  <#assign sequencer_run = sequencer_run_name_arr[input_e1_index]/>
+  <#assign lane_arr = "${lane}"?split(",") />
+  <#assign lane_num = lane_arr[input_e1_index]/>
+  <#assign barcode_arr = "${barcode}"?split(",") />
+  <#assign bar = barcode_arr[input_e1_index]/>
+
+
   <!-- Job: figure out if the input is a URL and, if it is, correclty download it to a staging area otherwise link it -->
   <job id="ID0.${input_e1_index}" namespace="seqware" name="runner" version="${seqware_version}">
     <argument>
@@ -158,6 +171,7 @@ FIXME: need to start with BAM file rather than fastq
     <profile namespace="globus" key="jobtype">condor</profile>
     <profile namespace="globus" key="count">1</profile>
     <profile namespace="globus" key="maxmemory">2000</profile>
+    <#if queue != ""><profile namespace="globus" key="queue">${queue}</profile></#if>
 
   </job>
 
@@ -194,6 +208,7 @@ FIXME: need to start with BAM file rather than fastq
     <profile namespace="globus" key="jobtype">condor</profile>
     <profile namespace="globus" key="count">${novoalign_slots}</profile>
     <profile namespace="globus" key="maxmemory">${novoalign_memory}</profile>
+    <#if queue != ""><profile namespace="globus" key="queue">${queue}</profile></#if>
 
     <!-- Prejob to make output directory -->
     <@requires_dir "${output_dir}/seqware-${seqware_version}_GenomicAlignmentNovoalign-${workflow_version}/${random}"/>
@@ -230,6 +245,7 @@ FIXME: need to start with BAM file rather than fastq
     <profile namespace="globus" key="jobtype">condor</profile>
     <profile namespace="globus" key="count">${picard_slots}</profile>
     <profile namespace="globus" key="maxmemory">${picard_memory + 2000}</profile>
+    <#if queue != ""><profile namespace="globus" key="queue">${queue}</profile></#if>
 
   </job>
 
@@ -265,6 +281,7 @@ FIXME: need to start with BAM file rather than fastq
     <profile namespace="globus" key="jobtype">condor</profile>
     <profile namespace="globus" key="count">${picard_slots}</profile>
     <profile namespace="globus" key="maxmemory">${picard_memory + 2000}</profile>
+    <#if queue != ""><profile namespace="globus" key="queue">${queue}</profile></#if>
 
   </job>
 
@@ -285,12 +302,12 @@ FIXME: need to start with BAM file rather than fastq
       --module ${module}
       --
       --gcr-algorithm ${algo}
-      --gcr-output-file PicardAddReadGroups::application/bam::${output_dir}/seqware-${seqware_version}_GenomicAlignmentNovoalign-${workflow_version}/${random}/${basename_e1}.annotated.bam
+      --gcr-output-file PicardAddReadGroups::application/bam::${output_dir}/seqware-${seqware_version}_GenomicAlignmentNovoalign-${workflow_version}/${random}/SWID_${ius}_${rg_library}_${sequencer_run}_${bar}_L00${lane_num}_R1_001.annotated.bam
       --gcr-command ${java}
       -Xmx${picard_memory}M
       -jar ${bin_dir}/${picardrg}
       INPUT=${output_dir}/seqware-${seqware_version}_GenomicAlignmentNovoalign-${workflow_version}/${random}/${basename_e1}.sorted.bam
-      OUTPUT=${output_dir}/seqware-${seqware_version}_GenomicAlignmentNovoalign-${workflow_version}/${random}/${basename_e1}.annotated.bam
+      OUTPUT=${output_dir}/seqware-${seqware_version}_GenomicAlignmentNovoalign-${workflow_version}/${random}/SWID_${ius}_${rg_library}_${sequencer_run}_${bar}_L00${lane_num}_R1_001.annotated.bam
       SORT_ORDER=coordinate
       VALIDATION_STRINGENCY=SILENT TMP_DIR=${tmp_dir}
       RGID=SWID:${workflow_run_accession}:${input_e1_index}
@@ -305,6 +322,7 @@ FIXME: need to start with BAM file rather than fastq
     <profile namespace="globus" key="jobtype">condor</profile>
     <profile namespace="globus" key="count">${picard_slots}</profile>
     <profile namespace="globus" key="maxmemory">${picard_memory + 2000}</profile>
+    <#if queue != ""><profile namespace="globus" key="queue">${queue}</profile></#if>
 
   </job>
 
@@ -318,7 +336,7 @@ FIXME: need to start with BAM file rather than fastq
       --module net.sourceforge.seqware.pipeline.modules.utilities.ProvisionFiles
       --
       --force-copy
-      --input-file ${output_dir}/seqware-${seqware_version}_GenomicAlignmentNovoalign-${workflow_version}/${random}/${basename_e1}.annotated.bam
+      --input-file ${output_dir}/seqware-${seqware_version}_GenomicAlignmentNovoalign-${workflow_version}/${random}/SWID_${ius}_${rg_library}_${sequencer_run}_${bar}_L00${lane_num}_R1_001.annotated.bam
       --output-dir ${output_prefix}${output_dir}/seqware-${seqware_version}_GenomicAlignmentNovoalign-${workflow_version}/${random}
     </argument>
 
