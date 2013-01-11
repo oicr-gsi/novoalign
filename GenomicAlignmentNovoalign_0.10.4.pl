@@ -93,8 +93,6 @@ if ($novoalign_input_format ne "")
 	}
 }
 
-
-
 my %org_idx = ('Homo sapiens' => '/oicr/data/genomes/homo_sapiens_mc/UCSC/hg19_random/Genomic/novocraft/hg19_random.nix',
 	       'Mus musculus' => '/oicr/data/genomes/mus_musculus/UCSC/Genomic/mus_musculus_random/novocraft/2.07.14/mm9.nix');
 my %org_ref = ('Homo sapiens' => '/.mounts/labs/seqware/public/seqware/datastore/bundles/data/indexes_novoalign_hg19_random-20110807.zip',
@@ -215,9 +213,6 @@ $sth3->finish();
 my $flowcells = {};
 my $index = 0;
 
-print "ZHIBIN: query string:\n";
-print "$query\n";
-
 my $sth = $database->prepare($query);
 $sth->execute();
 my $count = 0;
@@ -231,12 +226,6 @@ my $count = 0;
 	# geo_tissue_type
 	$tissue_source = "";
   	
-    print 'ZHIBIN query results:\n';
-    foreach my $i (@row) {
-      print "$i\t";
-    }
-    print "\n";
-
   	my $ius_id = $row[0];
   	my $tag = $row[1];
   	my $library = $row[2];
@@ -310,6 +299,10 @@ rg_library=$library
 rg_platform=illumina
 rg_platform_unit=$sr\-$tag\_$lane_num
 rg_sample_name=$sample
+ius_accession=$ius_accession
+sequencer_run_name=$sr
+lane=$lane_num
+barcode=$tag
 ";
 
     # find the fastq files associated with this IUS and workflow_run
