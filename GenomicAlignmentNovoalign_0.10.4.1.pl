@@ -357,7 +357,7 @@ barcode=$tag
     # old decider style
     #my $command_txt = "./bin/pegasus-run.pl --workflow-accession=$wf_accession --link-parent-ius-to-workflow-run=$ius_accession /tmp/GenomicAlignmentNovoalign_$rand.ini workflows/GenomicAlignment/Novoalign/GenomicAlignmentNovoalign_$wf_version.ftl"; 
     print "COMMAND:\n$command_txt\n\n";
-#    if (!$test) { system $command_txt; }
+    if (!$test) { system $command_txt; }
     }
 } #end if $this_wf_accession == $wf_accession
 	else {
