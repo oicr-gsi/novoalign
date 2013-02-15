@@ -15,7 +15,7 @@ use Getopt::Long;
 # * 
 
 
-my ($barcode, $username, $password, $outputPath, $dbhost, $seqware_meta_db, $flowcell, $wf_accession, $max_flowcells, $lane_to_process, $after_date, $skip_workflow_run_check, $test, $parent_wf_accession, $org, $organism, $debug, $skip_parent_workflow_run_status_check, $novoalign_expected_insert, $novoalign_r1_adapter_trim, $novoalign_r2_adapter_trim, $novoalign_input_format, $novoalign_additional_parameters, $skip_casava_check);
+my ($barcode, $username, $password, $outputPath, $dbhost, $seqware_meta_db, $flowcell, $wf_accession, $max_flowcells, $lane_to_process, $after_date, $skip_workflow_run_check, $test, $parent_wf_accession, $org, $organism, $debug, $skip_parent_workflow_run_status_check, $novoalign_expected_insert, $novoalign_r1_adapter_trim, $novoalign_r2_adapter_trim, $novoalign_input_format, $novoalign_additional_parameters);
 
 # /.mounts/labs/PDE/public/provisioned-bundles/sqwstage/Workflow_Bundle_GenomicAlignmentNovoalign/
 # /u/seqware/provisioned-bundles/sqwprod/Workflow_Bundle_GenomicAlignmentNovoalign_0.10.3_SeqWare_0.10.0/
@@ -347,7 +347,7 @@ barcode=$tag
 
     if ($row_count != $read_ends) { 
     	system("rm /tmp/.GenomicAlignmentNovoalign.pl.running");
-    	warn "ERROR: the number of fastq files in the DB ($row_count) must equal the number of reads ends ($read_ends)\n";
+    	die "ERROR: the number of fastq files in the DB ($row_count) must equal the number of reads ends ($read_ends)\n";
     }
     print "##zheng, you need to run this one. SUMMARY:\nsequencer_run_path\tsequencer_run\tread_ends\tlane\tbarcode\tsample\tlibrary\twr_id\tworkflow\tworkflow_sw_accession\n$sr_path\t$sr\t$read_ends\t$lane_num\t$tag\t$sample\t$organism\t$library\t$wr_id\t$this_wf\t$this_wf_accession\n";	
 #	my $command_txt = "java -jar /u/seqware/provisioned-bundles/sqwprod/Workflow_Bundle_GenomicAlignmentNovoalign_0.10.1_SeqWare_0.10.0/Workflow_Bundle_GenomicAlignmentNovoalign/0.10.1/lib/seqware-pipeline-0.10.0.jar --plugin net.sourceforge.seqware.pipeline.plugins.WorkflowLauncher -- --workflow-accession $wf_accession --link-workflow-run-to-parents $ius_accession --ini-files /tmp/GenomicAlignmentNovoalign_$rand.ini";
@@ -381,7 +381,7 @@ system("rm /tmp/.GenomicAlignmentNovoalign.pl.running");
 sub usage
 {
 	print "Unknown option: @_\n" if ( @_ );
-	print "usage: program [--username USERNAME] [--password PASSWORD] [--outputPath OUTPUTPATH] [--dbhost DBHOST] [--seqware-meta-db SEQWARE_META_DB] [--novoalign-expected-insert \"-i MODE MEAN,STDEV\" or \"\"] [--novoalign-r1-adapter-trim \"-a READ_1_ADAPTER\" or \"\"] [--novoalign-r2-adapter-trim \"READ_2_ADAPTER\" or \"\"] [--novoalign-input-format \"\" or \"-F STDFQ|ILMFQ|ILM1.8\"] [--novoalign-additional-parameters \"-r ALL 5 -R 0 -o SAM ...\"] [--flowcell FLOWCELL_NAME] [--wf-accession ACCESSION] [--parent-wf-accession ACCESSION] [--lane LANE_NUM] [--after-date SQL_DATE_STRING] [--barcode BARCODE_NUC] [[--help|-?] [--organism ORGANISM_NAME] [--skip-casava-check]\n";
+	print "usage: program [--username USERNAME] [--password PASSWORD] [--outputPath OUTPUTPATH] [--dbhost DBHOST] [--seqware-meta-db SEQWARE_META_DB] [--novoalign-expected-insert \"-i MODE MEAN,STDEV\" or \"\"] [--novoalign-r1-adapter-trim \"-a READ_1_ADAPTER\" or \"\"] [--novoalign-r2-adapter-trim \"READ_2_ADAPTER\" or \"\"] [--novoalign-input-format \"\" or \"-F STDFQ|ILMFQ|ILM1.8\"] [--novoalign-additional-parameters \"-r ALL 5 -R 0 -o SAM ...\"] [--flowcell FLOWCELL_NAME] [--wf-accession ACCESSION] [--parent-wf-accession ACCESSION] [--lane LANE_NUM] [--after-date SQL_DATE_STRING] [--barcode BARCODE_NUC] [[--help|-?] [--organism ORGANISM_NAME]\n";
 	exit 2;
 }
 
@@ -445,17 +445,30 @@ sub findGroupID
 {
 	my $sampleID = $_[0];
 	my ($parentID, $groupID);
+	my $temp;
 
 	$getGroupIDHandle->execute($sampleID);
-	if (($groupID) = $getGroupIDHandle->fetchrow_array)
+	if (($temp) = $getGroupIDHandle->fetchrow_array)
 	{
+		$groupID = $temp;
+		# we assume there is only one group id - this checks for a second!
+		if (($temp) = $getGroupIDHandle->fetchrow_array)
+		{
+			warn "\n*****\nERROR: sample_attributes has multiple geo_group_ids!  May not have found the correct group ID!\n*****\n\n";
+		}
 		return $groupID;
 	}
 	else
 	{
 		$getSampleParentHandle->execute($sampleID);
-		if (($parentID) = $getSampleParentHandle->fetchrow_array)
+		if (($temp) = $getSampleParentHandle->fetchrow_array)
 		{
+			$parentID = $temp;
+			# assuming there is only one row!
+			if (($temp) = $getSampleParentHandle->fetchrow_array)
+			{
+				warn "\n*****\nERROR: Sample has multiple parents in sample_hierarchy!  May not have found the correct group ID!\n*****\n\n";
+			}
 			return findGroupID($parentID);
 		}
 		else
