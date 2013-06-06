@@ -1,0 +1,1 @@
+/.mounts/labs/PDE/data/GenomicAlignmentNovoalign/indexes/novoalign/hg19/hg19_random/hg19_random.nix
