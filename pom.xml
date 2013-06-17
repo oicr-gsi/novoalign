@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ca.on.oicr.seqware.deciders</groupId>
+    <groupId>ca.on.oicr.pde.deciders</groupId>
     <artifactId>GenomicAlignmentNovoalign</artifactId>
-    <version>1.0</version>
+    <version>2.0</version>
     <packaging>jar</packaging>
 
     <name>decider-genomic-alignment-novoalign</name>
@@ -14,62 +14,79 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <seqware-version>0.13.6.2</seqware-version>
-	<workflow-version>0.10.4</workflow-version>
+        <seqware-version>0.13.6.7</seqware-version>
+        <workflow-version>0.10.4</workflow-version>
     </properties>
 
     <build>
-	<finalName>Decider_${project.version}_${project.artifactId}_${workflow-version}_SeqWare_${seqware-version}</finalName>
+        <finalName>Decider_${project.version}_${project.artifactId}_${workflow-version}_SeqWare_${seqware-version}</finalName>
         <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>2.3.2</version>
-            <configuration>
-                <source>1.6</source>
-                <target>1.6</target>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>seqware-distribution,decider-utilities</includeArtifactIds>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
-<dependencies>
-    <dependency>
-        <groupId>com.github.seqware</groupId>
-        <artifactId>seqware-distribution</artifactId>
-        <version>${seqware-version}</version>
-        <classifier>full</classifier>
-    </dependency>
-</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.seqware</groupId>
+            <artifactId>seqware-distribution</artifactId>
+            <version>${seqware-version}</version>
+            <classifier>full</classifier>
+        </dependency>
+        <dependency>
+            <groupId>ca.on.oicr.pde</groupId>
+            <artifactId>decider-utilities</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
 
-<repositories>
-    <repository>
-        <id>seqware.sourceforge.net</id>
-        <name>SeqWare Maven Repository</name>
-        <url>http://seqwaremaven.oicr.on.ca/artifactory/seqware-release</url>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-        <snapshots>
-            <enabled>false</enabled>
-        </snapshots>
-    </repository>
-    <repository>
-        <id>seqware.github.com</id>
-        <name>SeqWare Maven Snapshot Repository</name>
-        <url>http://seqwaremaven.oicr.on.ca/artifactory/seqware-snapshot</url>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-   </repository>
-   <repository>
-      <id>seqwaremaven.oicr.on.ca</id>
-      <name>seqwaremaven.oicr.on.ca-releases</name>
-      <url>http://206.108.121.137/artifactory/seqware-dependencies</url>
-    </repository>
- </repositories>
+    <repositories>
+        <repository>
+            <id>com.github.seqware</id>
+            <name>SeqWare Maven Repository</name>
+            <url>http://seqwaremaven.oicr.on.ca/artifactory/seqware-release</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>seqwaremaven.oicr.on.ca</id>
+            <name>seqwaremaven.oicr.on.ca-dependencies</name>
+            <url>http://seqwaremaven.oicr.on.ca/artifactory/seqware-dependencies</url>
+        </repository>
+    </repositories>
 
 </project>

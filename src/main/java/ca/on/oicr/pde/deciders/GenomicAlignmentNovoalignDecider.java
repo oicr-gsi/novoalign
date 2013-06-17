@@ -5,21 +5,20 @@
  * This decider provides a 'nested grouping' feature that allow grouping first 
  * by then by template type (geo_library_source_template_type) and finally by group id (geo_goup_id)
  */
-package ca.on.oicr.seqware.deciders;
+package ca.on.oicr.pde.deciders;
 
 import java.util.*;
 import net.sourceforge.seqware.common.module.FileMetadata;
 import net.sourceforge.seqware.common.hibernate.FindAllTheFiles.Header;
 import net.sourceforge.seqware.common.module.ReturnValue;
 import net.sourceforge.seqware.common.util.Log;
-import net.sourceforge.seqware.pipeline.deciders.BasicDecider;
 
 /**
  *
  * @author pruzanov@oicr.on.ca
  */
 
- public class GenomicAlignmentNovoalignDecider extends BasicDecider {
+ public class GenomicAlignmentNovoalignDecider extends OicrDecider {
     //Patterns to search for in files' names to determine mate correctly
     private String [][] readMateFlags = {{"_R1_","1_sequence.txt",".1.fastq"},{"_R2_","2_sequence.txt",".2.fastq"}};    
 
