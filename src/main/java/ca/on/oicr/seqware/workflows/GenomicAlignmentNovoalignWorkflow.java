@@ -112,25 +112,8 @@ public class GenomicAlignmentNovoalignWorkflow extends AbstractWorkflowDataModel
            };
            file.setType("application/bam");
            file.setIsInput(true);
-           file.setForceCopy(true);
           }
          }
-       
-       //Set inputs
-       for (int i = 0; i < this.fastq_inputs_end_1.length; i++) {
-         String basename1 = this.fastq_inputs_end_1[i].substring(this.fastq_inputs_end_1[i].lastIndexOf("/")+1);
-         String basename2 = this.runEnds > 1 ? this.fastq_inputs_end_2[i].substring(this.fastq_inputs_end_2[i].lastIndexOf("/")+1) : basename1;
-         SqwFile ifile1 = this.createFile("input_fastq_R1_" + i);
-         ifile1.setSourcePath(getWorkflowBaseDir() + "/data/test/" + basename1);
-         ifile1.setIsInput(true);
-         ifile1.setForceCopy(true);
-         if (this.runEnds > 1 && !basename2.equals(basename1)) {
-             SqwFile ifile2 = this.createFile("input_fastq_R2_" + i);
-             ifile2.setSourcePath(getWorkflowBaseDir() + "/data/test/" + basename2);
-             ifile2.setIsInput(true);
-             ifile2.setForceCopy(true);
-         }    
-       }
        
        //Set up outputs
        localOutputBamFilePaths = new String[this.fastq_inputs_end_1.length];
