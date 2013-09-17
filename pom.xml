@@ -4,17 +4,21 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ca.on.oicr.seqware.workflows</groupId>
-  <artifactId>genomic-alignment-novoalign</artifactId>
+  <artifactId>GenomicAlignmentNovoalign</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>genomic-alignment-novoalign</name>
+  <name>GenomicAlignmentNovoalign</name>
   <url>http://maven.apache.org</url>
 
   <properties>
+    <skipITs>true</skipITs>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <seqware-version>0.13.6.5</seqware-version>
+    <seqware-version>0.13.6.10</seqware-version>
+    <novoalign2-version>V2.07.15b</novoalign2-version>
+    <novoalign3-version>V3.00.05</novoalign3-version>
+    <picard-version>1.72</picard-version>
   </properties>
 
   <dependencies>
@@ -23,16 +27,6 @@
      <artifactId>seqware-bin-linux-x86-64-jre-6.0.29</artifactId>
      <version>1.0.0</version>
    </dependency>
-   <dependency>
-     <groupId>net.sourceforge.seqware</groupId>
-     <artifactId>seqware-bin-linux-x86-64-cat-5.67</artifactId>
-     <version>1.0.0</version>
-    </dependency>
-    <dependency>
-     <groupId>net.sourceforge.seqware</groupId>
-     <artifactId>seqware-bin-linux-x86-64-echo-5.67</artifactId>
-     <version>1.0.0</version>
-    </dependency>
     <dependency>
      <groupId>net.sourceforge.seqware</groupId>
      <artifactId>seqware-bin-linux-x86-64-perl-5.14.1</artifactId>
@@ -47,21 +41,23 @@
      <groupId>com.github.seqware</groupId>
      <artifactId>seqware-pipeline</artifactId>
      <version>${seqware-version}</version>
+     <scope>provided</scope>
     </dependency>
     <dependency>
      <groupId>picard</groupId>
      <artifactId>picard-tools</artifactId>
-     <version>1.72</version>
+     <version>${picard-version}</version>
     </dependency>
     <dependency>
      <groupId>novocraft</groupId>
      <artifactId>novocraft</artifactId>
-     <version>V2.07.15b</version>
+     <version>${novoalign2-version}</version>
     </dependency>
     <dependency>
      <groupId>novocraft</groupId>
-     <artifactId>novocraft</artifactId>
-     <version>V3.00.04</version>
+     <artifactId>novocraftV3</artifactId>
+     <version>${novoalign3-version}</version>
+     <type>zip</type>
     </dependency>
   </dependencies>
 
@@ -107,6 +103,7 @@
         <plugin>
            <groupId>org.apache.maven.plugins</groupId>
            <artifactId>maven-compiler-plugin</artifactId>
+	   <version>3.1</version>
            <configuration>
                <source>1.6</source>
               <target>1.6</target>
@@ -136,29 +133,41 @@
 
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>2.5</version>
-        <executions>
-          <execution>
-            <id>copy-resources</id>
-            <!-- here the phase you need -->
-            <phase>validate</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>workflow</directory>
-                  <excludes>
-                    <exclude>workflow.ftl</exclude>
-                    <exclude>workflow.ini</exclude>
-                  </excludes>
-                  <filtering>true</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
+                <version>2.5</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}</outputDirectory>
+                             <!-- see the explanation for this mutually exclusive syntax at http://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html -->
+                            <resources>
+                                <resource>
+                                    <directory>workflow</directory>
+                                    <includes>
+                                        <include>metadata.xml</include>
+                                        <include>config/*/*</include>
+                                        <include>workflows/workflow.ftl</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>workflow</directory>
+                                    <excludes>
+                                        <exclude>metadata.xml</exclude>
+                                        <exclude>config/*/*</exclude>
+                                        <exclude>workflows/workflow.ftl</exclude>
+                                    </excludes>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+
           <execution>
            <id>copy-classes</id>
            <!-- here the phase you need -->
@@ -215,47 +224,39 @@
                             <outputDirectory>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin</outputDirectory>
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
+			    <excludeScope>provided</excludeScope>
                         </configuration>
                     </execution>
                 </executions>
       </plugin>
       <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
                 <executions>
                     <execution>
-                        <id>chmod-java</id>
-                        <phase> install </phase>
-                        <configuration>
-                            <target>
-                                <chmod perm="555">
-                                    <fileset dir="${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/jre1.6.0_29/bin">
-                                        <filename name="**/*"/>
-                                    </fileset>
-                                </chmod>
-                            </target>
-                        </configuration>
+                        <id>recursive_executable</id>
+                        <phase>package</phase>
                         <goals>
-                            <goal>run</goal>
+                            <goal>exec</goal>
                         </goals>
+                        <configuration>
+                            <executable>chmod</executable>
+                            <commandlineArgs>755 -R ${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin</commandlineArgs>
+                        </configuration>
                     </execution>
                     <execution>
-                        <id>chmod-perl</id>
-                        <phase> install </phase>
-                        <configuration>
-                            <target>
-                                <chmod perm="555">
-                                    <fileset dir="${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/perl-5.14.1">
-                                        <filename name="**/perl"/>
-                                    </fileset>
-                                </chmod>
-                            </target>
-                        </configuration>
+                        <id>test_bundle</id>
+                        <phase>integration-test</phase>
                         <goals>
-                            <goal>run</goal>
+                            <goal>exec</goal>
                         </goals>
+                        <configuration>
+                            <skip>${skipITs}</skip>
+                            <executable>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/jre1.6.0_29/bin/java</executable>
+                            <commandlineArgs>-jar ${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/lib/seqware-distribution-${seqware-version}-full.jar --plugin net.sourceforge.seqware.pipeline.plugins.BundleManager -- -t -b ${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/ </commandlineArgs>
+                        </configuration>
                     </execution>
-
                 </executions>
             </plugin>
             <plugin>
@@ -296,8 +297,12 @@
               <links>   
                 <!-- link the reference files for Novoalign by client to webapp directory -->
                 <link>          
-                  <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data/indexes/novoalign/hg19/hg19_random/hg19_random.nix</dst>
-                  <src>${basedir}/links/hg19_random.nix</src>
+                  <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign3-version}/hg19_random.nix</dst>
+                  <src>${basedir}/links/${novoalign3-version}/hg19_random.nix</src>
+                </link>
+		<link>          
+                  <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign2-version}/hg19_random.nix</dst>
+                  <src>${basedir}/links/${novoalign2-version}/hg19_random.nix</src>
                 </link>
                 <link>
                   <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data/test/PCSI0022C.val.1.fastq.gz</dst>
@@ -316,11 +321,11 @@
                   <src>${basedir}/links/PCSI0022X.val.2.fastq.gz</src>
                 </link>
                 <link>
-                  <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraftV2.07.15b/novoalign.lic</dst>
+                  <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign2-version}/novoalign.lic</dst>
                   <src>${basedir}/links/novoalign.lic</src>
               </link>
               <link>
-                  <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraftV3.00.04/novoalign.lic</dst>
+                  <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign3-version}/novoalign.lic</dst>
                   <src>${basedir}/links/novoalign.lic</src>
               </link>
               </links>
