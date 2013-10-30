@@ -42,11 +42,17 @@ import net.sourceforge.seqware.common.util.Log;
     private String picard_memory = "3000";
     private String picardmerge_slots = "1";
     //For Read Group
-    private String rg_library = "library";
-    private String rg_platform = "illumina";
-    private String rg_platform_unit = "flowcell-barcode_lane";
-    private String rg_sample_name = "sample";
+//    private String rg_library = "library";
+//    private String rg_platform = "illumina";
+//    private String rg_platform_unit = "flowcell-barcode_lane";
+//    private String rg_sample_name = "sample";
     //Hotfix addition
+    
+    private String rg_library;
+    private String rg_platform;
+    private String rg_platform_unit;
+    private String rg_sample_name;
+    
     private String ius_accession;
     private String sequencer_run_name;
     private String lane;
@@ -253,7 +259,20 @@ import net.sourceforge.seqware.common.util.Log;
          this.lane = this.lane + "," + returnValue.getAttribute(Header.LANE_NUM.getTitle());
 	else 
 	 this.lane = returnValue.getAttribute(Header.LANE_NUM.getTitle());
-
+        
+        FileAttributes rv = new  FileAttributes(returnValue, returnValue.getFiles().get(0));
+        this.rg_library = rv.getLibrarySample() + rv.getLimsValue(Lims.GROUP_ID);
+        this.rg_platform = "illumina";
+        this.rg_platform_unit = rv.getSequencerRun() 
+                                + "-" 
+                                + rv.getBarcode() 
+                                + "_" 
+                                + lane;
+        this.rg_sample_name= rv.getDonor() + rv.getLimsValue(Lims.GROUP_ID);
+        
+        
+        
+        
 	return super.checkFileDetails(returnValue, fm);
     }
 
