@@ -220,7 +220,7 @@ public class GenomicAlignmentNovoalignWorkflow extends AbstractWorkflowDataModel
               job_paddrg.addFile(bam_file);
               job_paddrg.addFile(bai_file);
               job_paddrg.addParent(job_novo);
-              job_paddrg.setMaxMemory("6000");
+              job_paddrg.setMaxMemory(""+(Integer.valueOf(getProperty("picard_memory")) * 2));
               if (!this.queue.isEmpty()) {
                 job_paddrg.setQueue(this.queue);
               }
