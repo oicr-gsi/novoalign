@@ -4,11 +4,11 @@
  */
 package ca.on.oicr.seqware.workflows;
 
+import ca.on.oicr.pde.utilities.workflows.OicrWorkflow;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sourceforge.seqware.common.util.Log;
-import net.sourceforge.seqware.pipeline.workflowV2.AbstractWorkflowDataModel;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
 import net.sourceforge.seqware.pipeline.workflowV2.model.SqwFile;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Workflow;
@@ -17,8 +17,8 @@ import net.sourceforge.seqware.pipeline.workflowV2.model.Workflow;
  *
  * @author pruzanov
  */
-public class GenomicAlignmentNovoalignWorkflow extends AbstractWorkflowDataModel {
-    private String finalOutDir;
+public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
+    //private String finalOutDir;
     private String dataDir;
     private String queue;
     private int runEnds;
@@ -31,11 +31,14 @@ public class GenomicAlignmentNovoalignWorkflow extends AbstractWorkflowDataModel
     private String [] localOutputBamFilePaths;
     private String [] localOutputBaiFilePaths;
     private String novocraftVersion ="V2.07.15b" ;
+    private boolean manualOutput;
     
     
     @Override
     public Map<String, SqwFile> setupFiles() {
      try {
+         
+         
        if (getProperty("fastq_inputs_end_1") == null) {
            Logger.getLogger(GenomicAlignmentNovoalignWorkflow.class.getName()).log(Level.SEVERE, "fastq_inputs_end_1 is not set, we need at least one fastq file");
            return (null);
@@ -94,6 +97,8 @@ public class GenomicAlignmentNovoalignWorkflow extends AbstractWorkflowDataModel
            this.novocraftVersion = getProperty("novocraft_version");
        }
        
+       manualOutput = Boolean.valueOf(getProperty("manual_output"));
+       
        //Set up inputs
        for (int fileIndex = 0;fileIndex < this.fastq_inputs_end_1.length; fileIndex++) {         
           for (int r = 1;r <= this.runEnds; r++) {
@@ -133,18 +138,18 @@ public class GenomicAlignmentNovoalignWorkflow extends AbstractWorkflowDataModel
     
     @Override
     public void setupDirectory() {
-      try {
-          String outdir = null;
-         if (getProperty("output_dir") != null && getProperty("output_prefix") != null) {
-          outdir = getProperty("output_prefix") + getProperty("output_dir")
-                             + "/seqware-" + this.getSeqware_version() + "_" + this.getName() + "_" + this.getVersion() + "/" + this.getRandom() + "/";
-         }
-        
-         outdir = (null != outdir) ? outdir : "seqware_results";
-         this.addDirectory(outdir);
-         this.finalOutDir = outdir;
-         this.addDirectory(getProperty("data_dir"));
+   try {
+//          String outdir = null;
+//         if (getProperty("output_dir") != null && getProperty("output_prefix") != null) {
+//          outdir = getProperty("output_prefix") + getProperty("output_dir")
+//                             + "/seqware-" + this.getSeqware_version() + "_" + this.getName() + "_" + this.getVersion() + "/" + this.getRandom() + "/";
+//         }
+//        
+//         outdir = (null != outdir) ? outdir : "seqware_results";
+//         this.addDirectory(outdir);
+//         this.finalOutDir = outdir;
          this.dataDir = getProperty("data_dir").endsWith("/") ? getProperty("data_dir") : getProperty("data_dir") + "/";
+         this.addDirectory(getProperty("data_dir"));
                  
        } catch (Exception e) {
          Logger.getLogger(GenomicAlignmentNovoalignWorkflow.class.getName()).log(Level.WARNING, null, e);
@@ -209,18 +214,22 @@ public class GenomicAlignmentNovoalignWorkflow extends AbstractWorkflowDataModel
                         + "RGPU=" + getProperty("rg_platform_unit") + " "
                         + "RGSM=" + getProperty("rg_sample_name") + " "
                         + "CREATE_INDEX=true");      
-              SqwFile bam_file = this.createOutFile("application/bam",
-                                                     this.dataDir + localOutputBamFilePaths[i],
-                                                     this.finalOutDir + localOutputBamFilePaths[i],
-                                                     true);
-              SqwFile bai_file = this.createOutFile("application/bam-index",
-                                                     this.dataDir + localOutputBaiFilePaths[i],
-                                                     this.finalOutDir + localOutputBaiFilePaths[i],
-                                                     true);
+              //SqwFile bam_file = this.createOutFile("application/bam",
+              //                                       this.dataDir + localOutputBamFilePaths[i],
+              //                                       this.finalOutDir + localOutputBamFilePaths[i],
+              //                                       true);
+              
+              SqwFile bam_file = this.createOutputFile(this.dataDir + localOutputBamFilePaths[i], "application/bam", manualOutput );
+              //SqwFile bai_file = this.createOutFile("application/bam-index",
+              //                                      this.dataDir + localOutputBaiFilePaths[i],
+              //                                       this.finalOutDir + localOutputBaiFilePaths[i],
+              //                                      true);
+              
+              SqwFile bai_file = this.createOutputFile (this.dataDir + localOutputBaiFilePaths[i], "application/bam-index", manualOutput);
               job_paddrg.addFile(bam_file);
               job_paddrg.addFile(bai_file);
               job_paddrg.addParent(job_novo);
-              job_paddrg.setMaxMemory(""+(Integer.valueOf(getProperty("picard_memory")) * 2));
+              job_paddrg.setMaxMemory("6000");
               if (!this.queue.isEmpty()) {
                 job_paddrg.setQueue(this.queue);
               }
@@ -233,15 +242,15 @@ public class GenomicAlignmentNovoalignWorkflow extends AbstractWorkflowDataModel
 
     }
     
-    private SqwFile createOutFile (String meta,String source,String outpath,boolean force) {
-        SqwFile file = new SqwFile();
-        file.setType(meta);
-        file.setSourcePath(source);
-        file.setIsOutput(true);
-        file.setOutputPath(outpath);
-        file.setForceCopy(force);
-        
-        return file;
-    }
+//    private SqwFile createOutFile (String meta,String source,String outpath,boolean force) {
+//        SqwFile file = new SqwFile();
+//        file.setType(meta);
+//        file.setSourcePath(source);
+//        file.setIsOutput(true);
+//        file.setOutputPath(outpath);
+//        file.setForceCopy(force);
+//        
+//        return file;
+//    }
     
 }
