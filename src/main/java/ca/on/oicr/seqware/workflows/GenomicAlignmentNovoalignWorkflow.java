@@ -25,6 +25,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
     private String [] lanes;
     private String [] barcodes;
     private String [] localOutputBamFilePaths;
+    private String [] localOutputSamFilePaths;
     private String [] localOutputBaiFilePaths;
     private String [] localOutputLogFilePaths;
     private String novocraftVersion ="V2.07.15b" ;
@@ -119,12 +120,14 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
        
        //Set up outputs
        localOutputBamFilePaths = new String[this.fastq_inputs_end_1.length];
+       localOutputSamFilePaths = new String[this.fastq_inputs_end_1.length];
        localOutputBaiFilePaths = new String[this.fastq_inputs_end_1.length];
        localOutputLogFilePaths = new String[this.fastq_inputs_end_1.length];
        for (int b = 0; b < localOutputBamFilePaths.length; b++) {
        localOutputBamFilePaths[b] = "SWID_" + this.iusAccessions[b] + "_" 
              + getProperty("rg_library") + "_" + this.sequencerRunNames[b] + "_" + this.barcodes[b] 
              + "_L00" + this.lanes[b] + "_R1_001.annotated.bam";
+       localOutputSamFilePaths[b] = localOutputBamFilePaths[b].substring(0,localOutputBamFilePaths[b].lastIndexOf(".bam")) + ".sam";
        localOutputBaiFilePaths[b] = localOutputBamFilePaths[b].substring(0,localOutputBamFilePaths[b].lastIndexOf(".bam")) + ".bai";
        localOutputLogFilePaths[b] = localOutputBamFilePaths[b].substring(0,localOutputBamFilePaths[b].lastIndexOf(".bam")) + ".log";
        }     
@@ -182,15 +185,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
                         + getProperty("novoalign_input_format") + " " 
                         + getProperty("novoalign_threads") + " " 
                         + getProperty("novoalign_additional_parameters") 
-			+ " 2> "+this.dataDir + localOutputLogFilePaths[i]
-                        + " | "
-                        + getWorkflowBaseDir() + "/bin/" + getProperty("bundled_jre") + "/bin/java "
-                        + "-Xmx" + getProperty("picard_memory") + "M -jar "
-                        +  getWorkflowBaseDir() + "/bin/" + getProperty("picardsort") + " "
-                        + "INPUT=/dev/stdin "
-                        + "OUTPUT=" + this.dataDir + basename1 + ".sorted.bam "
-                        + "SORT_ORDER=coordinate "
-                        + "VALIDATION_STRINGENCY=SILENT CREATE_INDEX=true TMP_DIR=" + getProperty("tmp_dir"));
+			+ " 2> "+this.dataDir + localOutputLogFilePaths[i] + " > " +this.dataDir + localOutputSamFilePaths[i]);
 
 
               job_novo.setMaxMemory(getProperty("novoalign_memory"));
@@ -199,7 +194,18 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
               if (!this.queue.isEmpty()) {
                 job_novo.setQueue(this.queue);
               }
-                           
+                          
+	      Job jobBam = workflow.createBashJob("PicardSamToBam_"+i);
+	      jobBam.setCommand(getWorkflowBaseDir() + "/bin/" + getProperty("bundled_jre") + "/bin/java "
+                        + "-Xmx" + getProperty("picard_memory") + "M -jar "
+                        +  getWorkflowBaseDir() + "/bin/" + getProperty("picardsort") + " "
+                        + "INPUT="+this.dataDir + localOutputSamFilePaths[i] + " "
+                        + "OUTPUT=" + this.dataDir + basename1 + ".sorted.bam "
+                        + "SORT_ORDER=coordinate "
+                        + "VALIDATION_STRINGENCY=SILENT CREATE_INDEX=true TMP_DIR=" + getProperty("tmp_dir"));
+	      jobBam.addParent(job_novo);
+	      jobBam.setMaxMemory((Integer.valueOf(getProperty("picard_memory")) *2)+"");
+ 
               Job job_paddrg = workflow.createBashJob("PicardAddReadGroups_" + i);
               String wra = null == this.getWorkflow_run_accession() ? "testing" : this.getWorkflow_run_accession().toString();
               job_paddrg.setCommand(
@@ -231,8 +237,8 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
  
               job_paddrg.addFile(bam_file);
               job_paddrg.addFile(bai_file);
-              job_paddrg.addParent(job_novo);
-              job_paddrg.setMaxMemory("6000");
+              job_paddrg.addParent(jobBam);
+              job_paddrg.setMaxMemory((Integer.valueOf(getProperty("picard_memory")) *2)+"");
               if (!this.queue.isEmpty()) {
                 job_paddrg.setQueue(this.queue);
               }
