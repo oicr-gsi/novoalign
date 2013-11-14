@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.on.oicr.seqware.workflows;
 
 import ca.on.oicr.pde.utilities.workflows.OicrWorkflow;
@@ -30,6 +26,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
     private String [] barcodes;
     private String [] localOutputBamFilePaths;
     private String [] localOutputBaiFilePaths;
+    private String [] localOutputLogFilePaths;
     private String novocraftVersion ="V2.07.15b" ;
     private boolean manualOutput;
     
@@ -123,11 +120,13 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
        //Set up outputs
        localOutputBamFilePaths = new String[this.fastq_inputs_end_1.length];
        localOutputBaiFilePaths = new String[this.fastq_inputs_end_1.length];
+       localOutputLogFilePaths = new String[this.fastq_inputs_end_1.length];
        for (int b = 0; b < localOutputBamFilePaths.length; b++) {
        localOutputBamFilePaths[b] = "SWID_" + this.iusAccessions[b] + "_" 
              + getProperty("rg_library") + "_" + this.sequencerRunNames[b] + "_" + this.barcodes[b] 
              + "_L00" + this.lanes[b] + "_R1_001.annotated.bam";
        localOutputBaiFilePaths[b] = localOutputBamFilePaths[b].substring(0,localOutputBamFilePaths[b].lastIndexOf(".bam")) + ".bai";
+       localOutputLogFilePaths[b] = localOutputBamFilePaths[b].substring(0,localOutputBamFilePaths[b].lastIndexOf(".bam")) + ".log";
        }     
        
      } catch (Exception e) {
@@ -166,7 +165,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
               String basename1 = this.fastq_inputs_end_1[i].substring(this.fastq_inputs_end_1[i].lastIndexOf("/")+1);
               Job job_novo = workflow.createBashJob("novoalign_" + i);
               job_novo.setCommand(getWorkflowBaseDir() + "/bin/novocraft" + this.novocraftVersion + "/novoalign ");
-              if (this.runEnds == 2) {
+             if (this.runEnds == 2) {
                 job_novo.getCommand().addArgument(
                            "-f " + getFiles().get("input_fastq_R1_" + i).getProvisionedPath() + " " 
                                  + getFiles().get("input_fastq_R2_" + i).getProvisionedPath() + " "
@@ -183,6 +182,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
                         + getProperty("novoalign_input_format") + " " 
                         + getProperty("novoalign_threads") + " " 
                         + getProperty("novoalign_additional_parameters") 
+			+ " 2> "+this.dataDir + localOutputLogFilePaths[i]
                         + " | "
                         + getWorkflowBaseDir() + "/bin/" + getProperty("bundled_jre") + "/bin/java "
                         + "-Xmx" + getProperty("picard_memory") + "M -jar "
@@ -194,6 +194,8 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
 
 
               job_novo.setMaxMemory(getProperty("novoalign_memory"));
+	      SqwFile log_file = this.createOutputFile (this.dataDir + localOutputLogFilePaths[i], "text/plain", manualOutput);
+	      job_novo.addFile(log_file);
               if (!this.queue.isEmpty()) {
                 job_novo.setQueue(this.queue);
               }
@@ -226,6 +228,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
               //                                      true);
               
               SqwFile bai_file = this.createOutputFile (this.dataDir + localOutputBaiFilePaths[i], "application/bam-index", manualOutput);
+ 
               job_paddrg.addFile(bam_file);
               job_paddrg.addFile(bai_file);
               job_paddrg.addParent(job_novo);
