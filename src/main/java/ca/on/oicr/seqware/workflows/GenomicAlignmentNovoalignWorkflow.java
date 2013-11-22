@@ -80,13 +80,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
            this.barcodes = getProperty("barcode").split(",");
        }
        
-       if (getProperty("queue") == null) {
-            Logger.getLogger(GenomicAlignmentNovoalignWorkflow.class.getName()).log(Level.WARNING, "Queue not set, most likely will run as default queue");
-            this.queue = "";
-            return (null);
-        } else {
-            this.queue = getProperty("queue");         
-        }
+       this.queue = getOptionalProperty("queue","");         
           
        
        if (getProperty("novocraft_version") == null) {
