@@ -8,9 +8,9 @@ die () {
     exit 1
 }
 
-[[ "$#" == 3 ]] || die "3 arguments required, $# provided"
+[[ "$#" == 4 ]] || die "4 arguments required, $# provided"
 
-UNIQUE_ID=$(date +"%y%m%d_%H%M")_$(uuidgen | cut -d'-' -f1)
+UNIQUE_ID=$(date +"%y%m%d_%H%M")_$(( uuidgen 2>/dev/null || uuidcdef -u 2>/dev/null ) | cut -d'-' -f1)
 
 BASE_DIR=$1
 BASE_DIR="${BASE_DIR}"/"${UNIQUE_ID}"
@@ -19,8 +19,7 @@ SW_REST_URL=$2
 
 SCHEDULING_SYSTEM=$3
 
-
-SW_CLUSTER=sqwuser.hpc.oicr.on.ca
+SW_CLUSTER=$4
 SW_DAX_DIR="${BASE_DIR}"/dax
 
 SW_BUNDLE_DIR="${BASE_DIR}"/provisionedBundles
@@ -197,26 +196,31 @@ echo "${pegasus_tc_data}" > "${PEGASUS_CATALOG_TRANSFORMATION_FILE}"
 elif [[ "$SCHEDULING_SYSTEM" == "oozie" ]]
 then
 
-read -r -d '' seqware_settings <<EOF
+OOZIE_WORK_DIR="${BASE_DIR}"/oozieTmp
+OOZIE_APP_PATH="hdfs://hsqwstage-node1.hpc.oicr.on.ca:8020/user/"$(whoami)"/"
+
+mkdir "${OOZIE_WORK_DIR}"
+
+read -r -d '*' seqware_settings <<EOF
 SW_DEFAULT_WORKFLOW_ENGINE=oozie-sge
 SW_METADATA_METHOD=webservice
 SW_REST_URL=http://hsqwstage-www1.hpc.oicr.on.ca:8080/seqware-webservice-1.0.6
 SW_REST_USER=admin@admin.com
 SW_REST_PASS=admin
 
-SW_BUNDLE_DIR=/u/hseqwaretest/provisioned-bundles
-SW_BUNDLE_REPO_DIR=/u/hseqwaretest/released-bundles
+SW_BUNDLE_DIR=${SW_BUNDLE_DIR}
+SW_BUNDLE_REPO_DIR=${SW_BUNDLE_REPO_DIR}
 
 OOZIE_URL=http://hsqwstage-node1.hpc.oicr.on.ca:11000/oozie
 OOZIE_APP_ROOT=seqware_workflow
-OOZIE_APP_PATH=hdfs://hsqwstage-node1.hpc.oicr.on.ca:8020/user/hseqwaretest/
+OOZIE_APP_PATH=${OOZIE_APP_PATH}
 OOZIE_JOBTRACKER=hsqwstage-node1.hpc.oicr.on.ca:8021
 OOZIE_NAMENODE=hdfs://hsqwstage-node1.hpc.oicr.on.ca:8020
 OOZIE_QUEUENAME=default
-OOZIE_WORK_DIR=/u/hseqwaretest/tmp
+OOZIE_WORK_DIR=${OOZIE_WORK_DIR}
 
-OOZIE_SGE_MAX_MEMORY_PARAM_FORMAT=-l h_vmem=${maxMemory}M
-#OOZIE_SGE_THREADS_PARAM_FORMAT=-l slots=${threads}
+OOZIE_SGE_MAX_MEMORY_PARAM_FORMAT=-l h_vmem=\${maxMemory}M
+#OOZIE_SGE_THREADS_PARAM_FORMAT=-l slots=\${threads}
 OOZIE_SGE_THREADS_PARAM_FORMAT=
 
 HBASE.ZOOKEEPER.QUORUM=hsqwstage-node1.hpc.oicr.on.ca
@@ -232,12 +236,7 @@ echo "${seqware_settings}" > "${SEQWARE_SETTINGS_FILE}"
 chmod 600 "${SEQWARE_SETTINGS_FILE}"
 
 else
-
     die "Unsupported method"
-
 fi
-
-
-
 
 echo "${SEQWARE_SETTINGS_FILE}"

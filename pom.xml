@@ -12,18 +12,22 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <skipITs>true</skipITs>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <seqware-version>0.13.6.11</seqware-version>
         <novoalign2-version>V2.07.15b</novoalign2-version>
         <novoalign3-version>V3.00.05</novoalign3-version>
         <picard-version>1.72</picard-version>
-    
+        <utilities-version>1.3-SNAPSHOT</utilities-version>
+        <skipBundleTest>true</skipBundleTest>
+        <skipITs>true</skipITs>
+        <bundleDirectory>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}</bundleDirectory>
         <workingDir>/u/sqwci/_working</workingDir>
         <seqwareDir>/u/sqwci/_seqware</seqwareDir>
         <webserviceUrl>https://host_url/seqware-webservice-seqware_version</webserviceUrl>
         <schedulingSystem>pegasus</schedulingSystem>
+        <schedulingHost>sqwuser.hpc.oicr.on.ca</schedulingHost>
+        <seqwareDistribution>${bundleDirectory}/lib/seqware-distribution-${seqware-version}-full.jar</seqwareDistribution>
     </properties>
 
     <dependencies>
@@ -141,8 +145,9 @@
                 <configuration>
                     <skip>${skipITs}</skip>
                     <systemPropertyVariables>                   
-                        <bundledJava>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/jre1.6.0_29/bin/java</bundledJava>
-                        <bundledSeqware>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/lib/seqware-distribution-${seqware-version}-full.jar</bundledSeqware>
+                        <bundledJava>${bundleDirectory}/bin/jre1.6.0_29/bin/java</bundledJava>
+                        <!--Rename bundledSeqware to seqwareDistribution once refactored in workflow run test-->
+                        <bundledSeqware>${seqwareDistribution}</bundledSeqware>
                         <bundledWorkflow>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/</bundledWorkflow>
                         <workflowName>${workflow-directory-name}</workflowName>
                         <workflowVersion>${project.version}</workflowVersion>
@@ -150,6 +155,7 @@
                         <seqwareDirectory>${seqwareDir}</seqwareDirectory>
                         <webserviceUrl>${webserviceUrl}</webserviceUrl>
                         <schedulingSystem>${schedulingSystem}</schedulingSystem>
+                        <schedulingHost>${schedulingHost}</schedulingHost>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
