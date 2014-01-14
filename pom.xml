@@ -8,7 +8,7 @@
     <version>1.2</version>
     <packaging>jar</packaging>
 
-    <name>GenomicAlignmentNovoalign</name>
+    <name>workflow-novoalign</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -22,8 +22,7 @@
         <skipBundleTest>true</skipBundleTest>
         <skipITs>true</skipITs>
         <bundleDirectory>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}</bundleDirectory>
-        <workingDir>/u/sqwci/_working</workingDir>
-        <seqwareDir>/u/sqwci/_seqware</seqwareDir>
+        <workingDirectory>${user.home}/_testing/</workingDirectory>
         <webserviceUrl>https://host_url/seqware-webservice-seqware_version</webserviceUrl>
         <schedulingSystem>pegasus</schedulingSystem>
         <schedulingHost>sqwuser.hpc.oicr.on.ca</schedulingHost>
@@ -146,13 +145,11 @@
                     <skip>${skipITs}</skip>
                     <systemPropertyVariables>                   
                         <bundledJava>${bundleDirectory}/bin/jre1.6.0_29/bin/java</bundledJava>
-                        <!--Rename bundledSeqware to seqwareDistribution once refactored in workflow run test-->
                         <bundledSeqware>${seqwareDistribution}</bundledSeqware>
                         <bundledWorkflow>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/</bundledWorkflow>
                         <workflowName>${workflow-directory-name}</workflowName>
                         <workflowVersion>${project.version}</workflowVersion>
-                        <workingDirectory>${workingDir}</workingDirectory>
-                        <seqwareDirectory>${seqwareDir}</seqwareDirectory>
+                        <workingDirectory>${workingDirectory}</workingDirectory>
                         <webserviceUrl>${webserviceUrl}</webserviceUrl>
                         <schedulingSystem>${schedulingSystem}</schedulingSystem>
                         <schedulingHost>${schedulingHost}</schedulingHost>
