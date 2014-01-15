@@ -1,8 +1,8 @@
 {
     "defaults": {
-        "description": "FastQC workflow test",
-	"metrics_calculate": "/calculate.sh",
-        "metrics_compare": "/compare.sh",
+        "description": "Novoalign workflow test",
+	"metrics_calculate": "calculate.sh",
+        "metrics_compare": "compare.sh",
         "input_config_dir": "/.mounts/labs/PDE/data/RegressionTests/Novoalign/workflow/input_config/",
         "output_metrics_dir": "/.mounts/labs/PDE/data/RegressionTests/Novoalign/workflow/output_expectation/"
     },
