@@ -68,6 +68,11 @@
             <artifactId>decider-utilities</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>ca.on.oicr.pde.workflows</groupId>
+            <artifactId>GenomicAlignmentNovoalign</artifactId>
+            <version>${workflow-version}</version>
+        </dependency>
     </dependencies>
 
     <repositories>
