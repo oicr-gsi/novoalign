@@ -3,122 +3,40 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ca.on.oicr.pde.deciders</groupId>
+    <parent>
+        <groupId>ca.on.oicr.pde.deciders</groupId>
+        <artifactId>deciders</artifactId>
+        <version>2014.1.0</version>
+        <relativePath>../decider-parent-pom.xml</relativePath>
+    </parent>
+
     <artifactId>GenomicAlignmentNovoalign</artifactId>
     <version>2.0</version>
     <packaging>jar</packaging>
 
     <name>decider-genomic-alignment-novoalign</name>
-    <url>http://maven.apache.org</url>
-
+    
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <seqware-version>0.13.6.7</seqware-version>
         <workflow-version>2.0</workflow-version>
         <main-class>ca.on.oicr.pde.deciders.GenomicAlignmentNovoalignDecider</main-class>
     </properties>
 
-    <build>
-        <finalName>Decider_${project.version}_${project.artifactId}_${workflow-version}_SeqWare_${seqware-version}</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.7</version>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <includeArtifactIds>seqware-distribution,decider-utilities</includeArtifactIds>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>${main-class}</mainClass>
-                        </manifest>
-                        <manifestEntries>
-                            <Implementation-Version>${seqware-version}</Implementation-Version>
-                        </manifestEntries>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.seqware</groupId>
-            <artifactId>seqware-distribution</artifactId>
-            <version>${seqware-version}</version>
-            <classifier>full</classifier>
-        </dependency>
-        <dependency>
-            <groupId>ca.on.oicr.pde</groupId>
-            <artifactId>decider-utilities</artifactId>
-            <version>1.4.3</version>
-        </dependency>
         <dependency>
             <groupId>ca.on.oicr.pde.workflows</groupId>
             <artifactId>GenomicAlignmentNovoalign</artifactId>
             <version>${workflow-version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.seqware</groupId>
+                    <artifactId>seqware-distribution</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.github.seqware</groupId>
+                    <artifactId>seqware-pipeline</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>com.github.seqware</id>
-            <name>SeqWare Maven Repository</name>
-            <url>http://seqwaremaven.oicr.on.ca/artifactory/seqware-release</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>seqwaremaven.oicr.on.ca</id>
-            <name>seqwaremaven.oicr.on.ca-dependencies</name>
-            <url>http://seqwaremaven.oicr.on.ca/artifactory/seqware-dependencies</url>
-        </repository>
-    </repositories>
 
 </project>

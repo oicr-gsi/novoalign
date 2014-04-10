@@ -1,0 +1,30 @@
+{
+    "defaultDescription": "Novoalign decider test",
+    "defaultMetricsDirectory": "/.mounts/labs/PDE/data/RegressionTests/Novoalign/decider/development",
+    "defaultParameters": {
+    },
+    "defaultIniExclusions": ["parent-accessions", "workflow_run_accession", "workflow-run-accession", 
+        "unique_string", "parent_accessions", "parent_accession", "input_file", "workflow_bundle_dir"],
+    "tests": [
+        {
+            "id": "AshPC study test",
+            "studies": ["AshPC"]
+        },
+        {
+            "id": "pcsi sample test",
+            "samples": ["PCSI_0005%"]
+        },
+        {
+            "id": "sequencer run test",
+            "sequencerRuns": ["120912_h804_0094_BD181GACXX", "120911_SN802_0089_BD182YACXX"]
+        },
+        {
+            "id": "obc sample test",
+            "samples": ["OBC_0001%"]
+        },
+        {
+            "id": "AshPC study test 2",
+            "studies": ["AshPC"]
+        }
+    ]
+}
