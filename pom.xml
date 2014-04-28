@@ -27,6 +27,7 @@
         <schedulingSystem>pegasus</schedulingSystem>
         <schedulingHost>sqwuser.hpc.oicr.on.ca</schedulingHost>
         <seqwareDistribution>${bundleDirectory}/lib/seqware-distribution-${seqware-version}-full.jar</seqwareDistribution>
+	<jre-version>1.6.0_20</jre-version>
     </properties>
 
     <dependencies>
@@ -93,7 +94,7 @@
         <repository>
             <id>com.github.seqware</id>
             <name>SeqWare Maven Repository</name>
-            <url>http://206.108.121.137/artifactory/seqware-release</url>
+            <url>http://seqwaremaven.oicr.on.ca/artifactory/seqware-release</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -104,7 +105,7 @@
         <repository>
             <id>snapshot.com.github.seqware</id>
             <name>SeqWare Snapshot Maven Repository</name>
-            <url>http://206.108.121.137/artifactory/seqware-snapshot</url>
+            <url>http://seqwaremaven.oicr.on.ca/artifactory/seqware-snapshot</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
@@ -115,7 +116,7 @@
         <repository>
             <id>seqwaremaven.oicr.on.ca</id>
             <name>seqwaremaven.oicr.on.ca-releases</name>
-            <url>http://206.108.121.137/artifactory/seqware-dependencies</url>
+            <url>http://seqwaremaven.oicr.on.ca/artifactory/seqware-dependencies</url>
         </repository>
     </repositories>
 
@@ -209,7 +210,7 @@
                                     <directory>workflow</directory>
                                     <includes>
                                         <include>metadata.xml</include>
-                                        <include>config/*/*</include>
+                                        <include>config/*</include>
                                         <include>workflows/workflow.ftl</include>
                                     </includes>
                                     <filtering>true</filtering>
