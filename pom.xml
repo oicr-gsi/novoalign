@@ -26,16 +26,7 @@
             <groupId>ca.on.oicr.pde.workflows</groupId>
             <artifactId>GenomicAlignmentNovoalign</artifactId>
             <version>${workflow-version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.github.seqware</groupId>
-                    <artifactId>seqware-distribution</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.github.seqware</groupId>
-                    <artifactId>seqware-pipeline</artifactId>
-                </exclusion>
-            </exclusions>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

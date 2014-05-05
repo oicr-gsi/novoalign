@@ -2,29 +2,31 @@
     "defaultDescription": "Novoalign decider test",
     "defaultMetricsDirectory": "/.mounts/labs/PDE/data/RegressionTests/Novoalign/decider/development",
     "defaultParameters": {
+        "--output-path": "./"
     },
-    "defaultIniExclusions": ["parent-accessions", "workflow_run_accession", "workflow-run-accession", 
-        "unique_string", "parent_accessions", "parent_accession", "input_file", "workflow_bundle_dir"],
+    "defaultIniExclusions": ["parent-accessions", "workflow_run_accession", "workflow-run-accession",
+        "unique_string", "parent_accessions", "parent_accession", "input_file", "input_files", "workflow_bundle_dir",
+        "output_prefix"],
     "tests": [
         {
             "id": "AshPC study test",
             "studies": ["AshPC"]
         },
         {
-            "id": "pcsi sample test",
-            "samples": ["PCSI_0005%"]
+            "id": "PCSI sample test",
+            "parameters": {
+                "--root-sample-name": "PCSI_0005"
+            }
         },
         {
             "id": "sequencer run test",
-            "sequencerRuns": ["120912_h804_0094_BD181GACXX", "120911_SN802_0089_BD182YACXX"]
+            "sequencerRuns": ["120912_h804_0094_BD181GACXX"]
         },
         {
-            "id": "obc sample test",
-            "samples": ["OBC_0001%"]
-        },
-        {
-            "id": "AshPC study test 2",
-            "studies": ["AshPC"]
+            "id": "OBC sample test",
+            "parameters": {
+                "--root-sample-name": "OBC_0001"
+            }
         }
     ]
 }
