@@ -16,7 +16,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <seqware-version>0.13.6.13</seqware-version>
         <novoalign2-version>V2.07.15b</novoalign2-version>
-        <novoalign3-version>V3.00.05</novoalign3-version>
+        <novoalign3-version>V3.02.04</novoalign3-version>
         <picard-version>1.72</picard-version>
         <utilities-version>1.3-SNAPSHOT</utilities-version>
         <skipBundleTest>true</skipBundleTest>
@@ -27,7 +27,7 @@
         <schedulingSystem>pegasus</schedulingSystem>
         <schedulingHost>sqwuser.hpc.oicr.on.ca</schedulingHost>
         <seqwareDistribution>${bundleDirectory}/lib/seqware-distribution-${seqware-version}-full.jar</seqwareDistribution>
-	<jre-version>1.6.0_20</jre-version>
+	<jre-version>1.6.0_29</jre-version>
     </properties>
 
     <dependencies>
@@ -87,7 +87,12 @@
             <version>6.8.7</version>
             <scope>test</scope>
         </dependency>
-    
+	<dependency>
+	    <groupId>edu.umich.sph.genome</groupId>
+	    <artifactId>fastQValidator</artifactId>
+	    <version>0.1.1a</version>
+    	   <type>zip</type>
+	</dependency> 
     </dependencies>
 
     <repositories>
@@ -367,6 +372,7 @@
             <plugin>
                 <groupId>com.pyx4j</groupId>
                 <artifactId>maven-junction-plugin</artifactId>
+		<version>1.0.3</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
