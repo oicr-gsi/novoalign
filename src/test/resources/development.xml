@@ -3,7 +3,7 @@
     <test name="WorkflowRunTests">
         <classes>
             <parameter name="testDefinition" value="/tests.json"/>
-            <class name="ca.on.oicr.pde.common.WorkflowRunTestFactory"/>
+            <class name="ca.on.oicr.pde.testing.WorkflowRunTestFactory"/>
         </classes>
     </test>
 </suite>
