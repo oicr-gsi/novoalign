@@ -8,10 +8,10 @@ import net.sourceforge.seqware.common.util.Log;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
 import net.sourceforge.seqware.pipeline.workflowV2.model.SqwFile;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Workflow;
-
+import net.sourceforge.seqware.pipeline.workflowV2.model.Command;
 /**
  *
- * @author pruzanov
+ * @author pruzanov, mtaschuk
  */
 public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
     //private String finalOutDir;
@@ -134,126 +134,98 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
     
     @Override
     public void setupDirectory() {
-   try {
-//          String outdir = null;
-//         if (getProperty("output_dir") != null && getProperty("output_prefix") != null) {
-//          outdir = getProperty("output_prefix") + getProperty("output_dir")
-//                             + "/seqware-" + this.getSeqware_version() + "_" + this.getName() + "_" + this.getVersion() + "/" + this.getRandom() + "/";
-//         }
-//        
-//         outdir = (null != outdir) ? outdir : "seqware_results";
-//         this.addDirectory(outdir);
-//         this.finalOutDir = outdir;
          this.dataDir = getProperty("data_dir").endsWith("/") ? getProperty("data_dir") : getProperty("data_dir") + "/";
          this.addDirectory(getProperty("data_dir"));
-                 
-       } catch (Exception e) {
-         Logger.getLogger(GenomicAlignmentNovoalignWorkflow.class.getName()).log(Level.WARNING, null, e);
-       }
     }
     
     
     @Override
     public void buildWorkflow() {
-        try{
-        Workflow workflow = this.getWorkflow();
-                 
-          for (int i = 0; i < this.fastq_inputs_end_1.length; i++) {
-              String basename1 = this.fastq_inputs_end_1[i].substring(this.fastq_inputs_end_1[i].lastIndexOf("/")+1);
-              Job job_novo = workflow.createBashJob("novoalign_" + i);
-              job_novo.setCommand(getWorkflowBaseDir() + "/bin/novocraft" + this.novocraftVersion + "/novoalign ");
-             if (this.runEnds == 2) {
-                job_novo.getCommand().addArgument(
-                           "-f " + getFiles().get("input_fastq_R1_" + i).getProvisionedPath() + " " 
-                                 + getFiles().get("input_fastq_R2_" + i).getProvisionedPath() + " "
-                         + getProperty("novoalign_expected_insert") + " " 
-                         + getProperty("novoalign_r1_adapter_trim") + " "
-                         + getProperty("novoalign_r2_adapter_trim"));
-              } else {
-                job_novo.getCommand().addArgument(
-                               "-f " + getFiles().get("input_fastq_R1_" + i).getProvisionedPath() + " "
-                             + getProperty("novoalign_r1_adapter_trim"));
-              }
-                job_novo.getCommand().addArgument( 
-                          getProperty("novoalign_index") + " "
-                        + getProperty("novoalign_input_format") + " " 
-                        + getProperty("novoalign_threads") + " " 
-                        + getProperty("novoalign_additional_parameters") 
-			+ " 2> "+this.dataDir + localOutputLogFilePaths[i] + " > " +this.dataDir + localOutputSamFilePaths[i]);
+	Workflow workflow = this.getWorkflow();
+        String[] srn=getProperty("sequencer_run_name").split(","), lanes=getProperty("lane").split(","), barcodes=getProperty("barcode").split(",");
+        for (int i = 0; i < this.fastq_inputs_end_1.length; i++) {
+		Job confirmFastq1Job = workflow.createBashJob("confirmFastqFileRead1_"+i);
+		confirmFastq1Job.getCommand().addArgument(getProperty("fastq_validator"));
+		confirmFastq1Job.getCommand().addArgument("--file "+this.fastq_inputs_end_1[i]);
+		confirmFastq1Job.getCommand().addArgument(getProperty("fastq_validator_additional_parameters"));
+		if (!this.queue.isEmpty()) {
+			confirmFastq1Job.setQueue(this.queue);
+		}
 
+        	String basename1 = this.fastq_inputs_end_1[i].substring(this.fastq_inputs_end_1[i].lastIndexOf("/")+1);
+		//The correct format for this is using all underscores, NOT hypens
+		String runlanebarcode=srn[i]+"_"+lanes[i]+"_"+barcodes[i];
+		String readgroup = "-o SAM $'@RG\\tID:"+runlanebarcode+"\\tPU:"+runlanebarcode+"\\tLB:"+getProperty("rg_library")+"\\tSM:"+getProperty("rg_sample_name")+"\\tPL:"+getProperty("rg_platform")+"'";
 
-              job_novo.setMaxMemory(getProperty("novoalign_memory"));
-	      SqwFile log_file = this.createOutputFile (this.dataDir + localOutputLogFilePaths[i], "text/plain", manualOutput);
-	      job_novo.addFile(log_file);
-              if (!this.queue.isEmpty()) {
-                job_novo.setQueue(this.queue);
-              }
+		Job job_novo=null;
+ 		String files = "-f "+getFiles().get("input_fastq_R1_" + i).getProvisionedPath();
+		String adapters=getProperty("novoalign_r1_adapter_trim");
+		String insert="";
+            	if (this.runEnds == 2) {
+			Job confirmFastq2Job = workflow.createBashJob("confirmFastqFileRead2_"+i);
+	                confirmFastq2Job.getCommand().addArgument(getProperty("fastq_validator"));
+        	        confirmFastq2Job.getCommand().addArgument("--file "+this.fastq_inputs_end_2[i]);
+			confirmFastq2Job.getCommand().addArgument(getProperty("fastq_validator_additional_parameters"));
+			if (!this.queue.isEmpty()) {
+                 	       confirmFastq2Job.setQueue(this.queue);
+	                }
+			job_novo = workflow.createBashJob("novoalign_" + i);
+			job_novo.addParent(confirmFastq2Job);
+
+			files+=" " +getFiles().get("input_fastq_R2_" + i).getProvisionedPath();
+			adapters+=" " +getProperty("novoalign_r2_adapter_trim");
+			insert= getProperty("novoalign_expected_insert");
+		}
+		else {
+			job_novo = workflow.createBashJob("novoalign_" + i);
+		}
+	      	///Novoalign align and add read groups
+	      	Command command = job_novo.getCommand();
+              	command.addArgument(getWorkflowBaseDir() + "/bin/novocraft" + this.novocraftVersion + "/novoalign ");
+		command.addArgument(insert);
+                command.addArgument(files).addArgument(adapters);
+		command.addArgument(getProperty("novoalign_index"));
+		command.addArgument(getProperty("novoalign_input_format"));
+		command.addArgument(getProperty("novoalign_threads"));
+		command.addArgument(readgroup);
+		command.addArgument(getOptionalProperty("novoalign_additional_parameters",""));
+		command.addArgument(" 2> "+this.dataDir + localOutputLogFilePaths[i] + " | ");
+		command.addArgument("perl " +getWorkflowBaseDir() + "/bin/checkBamFile.pl | ");
+		command.addArgument(getWorkflowBaseDir() + "/bin/" + getProperty("bundled_jre") + "/bin/java ");
+                command.addArgument("-Xmx" + getProperty("picard_memory")+"M");
+                command.addArgument("-jar " +  getWorkflowBaseDir() + "/bin/" + getProperty("picardsort"));
+                command.addArgument("INPUT=/dev/stdin");
+                command.addArgument("OUTPUT=" + this.dataDir + localOutputBamFilePaths[i]);
+                command.addArgument("SORT_ORDER=coordinate VALIDATION_STRINGENCY=SILENT CREATE_INDEX=true");
+                command.addArgument("TMP_DIR=" + getProperty("tmp_dir"));
+		job_novo.setMaxMemory(getProperty("novoalign_memory"));
+		job_novo.addParent(confirmFastq1Job);
+
+	      	SqwFile log_file = this.createOutputFile (this.dataDir + localOutputLogFilePaths[i], "text/plain", manualOutput);
+		SqwFile bam_file = this.createOutputFile(this.dataDir + localOutputBamFilePaths[i], "application/bam", manualOutput );
+              	SqwFile bai_file = this.createOutputFile (this.dataDir + localOutputBaiFilePaths[i], "application/bam-index", manualOutput);
+ 
+              	job_novo.addFile(bam_file);
+              	job_novo.addFile(bai_file);
+	      	job_novo.addFile(log_file);
+              	if (!this.queue.isEmpty()) {
+                	job_novo.setQueue(this.queue);
+              	}
                           
-	      Job jobBam = workflow.createBashJob("PicardSamToBam_"+i);
-	      jobBam.setCommand(getWorkflowBaseDir() + "/bin/" + getProperty("bundled_jre") + "/bin/java "
-                        + "-Xmx" + getProperty("picard_memory") + "M -jar "
-                        +  getWorkflowBaseDir() + "/bin/" + getProperty("picardsort") + " "
-                        + "INPUT="+this.dataDir + localOutputSamFilePaths[i] + " "
-                        + "OUTPUT=" + this.dataDir + basename1 + ".sorted.bam "
-                        + "SORT_ORDER=coordinate "
-                        + "VALIDATION_STRINGENCY=SILENT CREATE_INDEX=true TMP_DIR=" + getProperty("tmp_dir"));
-	      jobBam.addParent(job_novo);
-	      jobBam.setMaxMemory((Integer.valueOf(getProperty("picard_memory")) *2)+"");
- 
-              Job job_paddrg = workflow.createBashJob("PicardAddReadGroups_" + i);
-              String wra = null == this.getWorkflow_run_accession() ? "testing" : this.getWorkflow_run_accession().toString();
-              job_paddrg.setCommand(
-                          getWorkflowBaseDir() + "/bin/" + getProperty("bundled_jre") + "/bin/java "
-                        + "-Xmx" + getProperty("picard_memory") + "M -jar "
-                        +  getWorkflowBaseDir() + "/bin/" + getProperty("picardrg") + " "
-                        + "INPUT=" + this.dataDir + basename1 + ".sorted.bam "
-                        + "OUTPUT=" + this.dataDir + localOutputBamFilePaths[i] + " "
-                        + "SORT_ORDER=coordinate "
-                        + "VALIDATION_STRINGENCY=SILENT TMP_DIR=" + getProperty("tmp_dir") + " "
-                        + "RGID=SWID:" + wra + ":" + i + " "
-                        + "RGLB=" + getProperty("rg_library") + " "
-                        + "RGPL=" + getProperty("rg_platform") + " "
-                        + "RGPU=" + getProperty("rg_platform_unit") + " "
-                        + "RGSM=" + getProperty("rg_sample_name") + " "
-                        + "CREATE_INDEX=true");      
-              //SqwFile bam_file = this.createOutFile("application/bam",
-              //                                       this.dataDir + localOutputBamFilePaths[i],
-              //                                       this.finalOutDir + localOutputBamFilePaths[i],
-              //                                       true);
-              
-              SqwFile bam_file = this.createOutputFile(this.dataDir + localOutputBamFilePaths[i], "application/bam", manualOutput );
-              //SqwFile bai_file = this.createOutFile("application/bam-index",
-              //                                      this.dataDir + localOutputBaiFilePaths[i],
-              //                                       this.finalOutDir + localOutputBaiFilePaths[i],
-              //                                      true);
-              
-              SqwFile bai_file = this.createOutputFile (this.dataDir + localOutputBaiFilePaths[i], "application/bam-index", manualOutput);
- 
-              job_paddrg.addFile(bam_file);
-              job_paddrg.addFile(bai_file);
-              job_paddrg.addParent(jobBam);
-              job_paddrg.setMaxMemory((Integer.valueOf(getProperty("picard_memory")) *2)+"");
-              if (!this.queue.isEmpty()) {
-                job_paddrg.setQueue(this.queue);
-              }
-              
+	      	///Sort SAM, create the bam and bam index
+		//Job jobBam = workflow.createBashJob("PicardSortSamMakeBam_"+i);
+//		command = jobBam.getCommand();
+//	      	command.addArgument(getWorkflowBaseDir() + "/bin/" + getProperty("bundled_jre") + "/bin/java ");
+//		command.addArgument("-Xmx" + getProperty("picard_memory")+"M");
+//		command.addArgument("-jar " +  getWorkflowBaseDir() + "/bin/" + getProperty("picardsort"));
+//		command.addArgument("INPUT="+this.dataDir + localOutputSamFilePaths[i]);
+//		command.addArgument("OUTPUT=" + this.dataDir + localOutputBamFilePaths[i]);
+//		command.addArgument("SORT_ORDER=coordinate VALIDATION_STRINGENCY=SILENT CREATE_INDEX=true");
+//		command.addArgument("TMP_DIR=" + getProperty("tmp_dir"));
+//	      	jobBam.addParent(job_novo);
+//	      	jobBam.setMaxMemory((Integer.valueOf(getProperty("picard_memory")) *2)+"");
           }
-          
-        } catch (Exception e) {
-          Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-        }
+        
 
     }
-    
-//    private SqwFile createOutFile (String meta,String source,String outpath,boolean force) {
-//        SqwFile file = new SqwFile();
-//        file.setType(meta);
-//        file.setSourcePath(source);
-//        file.setIsOutput(true);
-//        file.setOutputPath(outpath);
-//        file.setForceCopy(force);
-//        
-//        return file;
-//    }
-    
 }

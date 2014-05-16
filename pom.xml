@@ -17,7 +17,7 @@
 
     <properties>
         <novoalign2-version>V2.07.15b</novoalign2-version>
-        <novoalign3-version>V3.00.05</novoalign3-version>
+        <novoalign3-version>V3.02.04</novoalign3-version>
         <picard-version>1.72</picard-version>
     </properties>
 
@@ -38,6 +38,12 @@
             <version>${novoalign3-version}</version>
             <type>zip</type>
         </dependency>
+        <dependency>
+            <groupId>edu.umich.sph.genome</groupId>
+            <artifactId>fastQValidator</artifactId>
+            <version>0.1.1a</version>
+            <type>zip</type>
+        </dependency> 
     </dependencies>
 
     <build>
@@ -45,6 +51,7 @@
             <plugin>
                 <groupId>com.pyx4j</groupId>
                 <artifactId>maven-junction-plugin</artifactId>
+                <version>1.0.3</version>
                 <configuration>
                     <links>   
                         <!-- link the reference files for Novoalign by client to webapp directory -->
