@@ -26,7 +26,6 @@
             <groupId>ca.on.oicr.pde.workflows</groupId>
             <artifactId>GenomicAlignmentNovoalign</artifactId>
             <version>${workflow-version}</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
