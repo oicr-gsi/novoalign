@@ -14,7 +14,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <seqware-version>0.13.6.13</seqware-version>
+        <seqware-version>1.0.15</seqware-version>
         <novoalign2-version>V2.07.15b</novoalign2-version>
         <novoalign3-version>V3.02.04</novoalign3-version>
         <picard-version>1.72</picard-version>
@@ -30,15 +30,15 @@
         <schedulingSystem>pegasus</schedulingSystem>
         <schedulingHost>sqwuser.hpc.oicr.on.ca</schedulingHost>
         <seqwareDistribution>${bundleDirectory}/lib/seqware-distribution-${seqware-version}-full.jar</seqwareDistribution>
-	<jre-version>1.6.0_29</jre-version>
+	<jre-version>1.7.0_51</jre-version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>net.sourceforge.seqware</groupId>
-            <artifactId>seqware-bin-linux-x86-64-jre-6.0.29</artifactId>
+            <groupId>io.seqware</groupId>
+            <artifactId>seqware-bin-linux-x86-64-jre-7.0.51</artifactId>
             <version>1.0.0</version>
-        </dependency>
+	</dependency>
         <dependency>
             <groupId>net.sourceforge.seqware</groupId>
             <artifactId>seqware-bin-linux-x86-64-perl-5.14.1</artifactId>
