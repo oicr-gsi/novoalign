@@ -5,7 +5,7 @@
 
     <groupId>ca.on.oicr.pde.workflows</groupId>
     <artifactId>GenomicAlignmentNovoalign</artifactId>
-    <version>2.0</version>
+    <version>2.1</version>
     <packaging>jar</packaging>
 
     <name>workflow-novoalign</name>
@@ -24,7 +24,7 @@
 	<python-version>2.7</python-version>
         <skipBundleTest>true</skipBundleTest>
         <skipITs>true</skipITs>
-        <bundleDirectory>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}</bundleDirectory>
+        <bundleDirectory>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}</bundleDirectory>
         <workingDirectory>${user.home}/_testing/</workingDirectory>
         <webserviceUrl>https://host_url/seqware-webservice-seqware_version</webserviceUrl>
         <schedulingSystem>pegasus</schedulingSystem>
@@ -168,10 +168,10 @@
                 <configuration>
                     <skip>${skipITs}</skip>
                     <systemPropertyVariables>                   
-                        <bundledJava>${bundleDirectory}/bin/jre1.6.0_29/bin/java</bundledJava>
+                        <bundledJava>${bundleDirectory}/bin/jre${jre-version}/bin/java</bundledJava>
                         <bundledSeqware>${seqwareDistribution}</bundledSeqware>
-                        <bundledWorkflow>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/</bundledWorkflow>
-                        <workflowName>${workflow-directory-name}</workflowName>
+                        <bundledWorkflow>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/</bundledWorkflow>
+                        <workflowName>${project.artifactId}</workflowName>
                         <workflowVersion>${project.version}</workflowVersion>
                         <workingDirectory>${workingDirectory}</workingDirectory>
                         <webserviceUrl>${webserviceUrl}</webserviceUrl>
@@ -226,7 +226,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}</outputDirectory>
+                            <outputDirectory>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}</outputDirectory>
                             <!-- see the explanation for this mutually exclusive syntax at http://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html -->
                             <resources>
                                 <resource>
@@ -259,7 +259,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/classes</outputDirectory>
+                            <outputDirectory>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/classes</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.build.directory}/classes</directory>
@@ -292,7 +292,7 @@
                                     <version>${seqware-version}</version>
                                     <classifier>full</classifier>
                                     <overWrite>true</overWrite>
-                                    <outputDirectory>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/lib</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/lib</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
@@ -304,7 +304,7 @@
                             <goal>unpack-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin</outputDirectory>
+                            <outputDirectory>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin</outputDirectory>
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
                             <excludeScope>provided</excludeScope>
@@ -318,7 +318,7 @@
                             <goal>unpack-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/classes</outputDirectory>
+                            <outputDirectory>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/classes</outputDirectory>
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
                             <includeArtifactIds>workflow-utilities</includeArtifactIds>
@@ -339,7 +339,7 @@
                         </goals>
                         <configuration>
                             <executable>chmod</executable>
-                            <commandlineArgs>755 -R ${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin</commandlineArgs>
+                            <commandlineArgs>755 -R ${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin</commandlineArgs>
                         </configuration>
                     </execution>
                     <execution>
@@ -350,8 +350,8 @@
                         </goals>
                         <configuration>
                             <skip>${skipITs}</skip>
-                            <executable>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/jre1.6.0_29/bin/java</executable>
-                            <commandlineArgs>-jar ${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/lib/seqware-distribution-${seqware-version}-full.jar --plugin net.sourceforge.seqware.pipeline.plugins.BundleManager -- -t -b ${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/ </commandlineArgs>
+                            <executable>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/jre${jre-version}/bin/java</executable>
+                            <commandlineArgs>-jar ${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/lib/seqware-distribution-${seqware-version}-full.jar --plugin net.sourceforge.seqware.pipeline.plugins.BundleManager -- -t -b ${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/ </commandlineArgs>
                         </configuration>
                     </execution>
                 </executions>
@@ -395,40 +395,40 @@
                     <links>   
                         <!-- link the reference files for Novoalign by client to webapp directory -->
                         <link>          
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign3-version}/hg19_random.nix</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign3-version}/hg19_random.nix</dst>
                             <src>${basedir}/links/${novoalign3-version}/hg19_random.nix</src>
                         </link>
                         <link>          
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign2-version}/hg19_random.nix</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign2-version}/hg19_random.nix</dst>
                             <src>${basedir}/links/${novoalign2-version}/hg19_random.nix</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data/test/PCSI0022C.val.1.fastq.gz</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022C.val.1.fastq.gz</dst>
                             <src>${basedir}/links/PCSI0022C.val.1.fastq.gz</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data/test/PCSI0022C.val.2.fastq.gz</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022C.val.2.fastq.gz</dst>
                             <src>${basedir}/links/PCSI0022C.val.2.fastq.gz</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data/test/PCSI0022X.val.1.fastq.gz</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022X.val.1.fastq.gz</dst>
                             <src>${basedir}/links/PCSI0022X.val.1.fastq.gz</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data/test/PCSI0022X.val.2.fastq.gz</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022X.val.2.fastq.gz</dst>
                             <src>${basedir}/links/PCSI0022X.val.2.fastq.gz</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign2-version}/novoalign.lic</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign2-version}/novoalign.lic</dst>
                             <src>${basedir}/links/novoalign.lic</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign3-version}/novoalign.lic</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign3-version}/novoalign.lic</dst>
                             <src>${basedir}/links/novoalign.lic</src>
                         </link>
                     </links>
                     <!--<composeClasses>
-                     <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data</dst>
+                     <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data</dst>
                        <packages>
                          <package>
                             <name>symlinks</name>
@@ -445,7 +445,7 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Workflow-Bundle-Path>${project.build.directory}/Workflow_Bundle_${workflow-directory-name}_${project.version}_SeqWare_${seqware-version}</Workflow-Bundle-Path>
+                            <Workflow-Bundle-Path>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}</Workflow-Bundle-Path>
                         </manifestEntries>
                     </archive>
                 </configuration>
