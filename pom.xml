@@ -10,10 +10,8 @@
     </parent>
 
     <artifactId>GenomicAlignmentNovoalign</artifactId>
-    <version>2.0</version>
+    <version>2.1</version>
     <packaging>jar</packaging>
-
-    <name>workflow-novoalign</name>
 
     <properties>
         <novoalign2-version>V2.07.15b</novoalign2-version>
@@ -59,47 +57,38 @@
                     <links>   
                         <!-- link the reference files for Novoalign by client to webapp directory -->
                         <link>          
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign3-version}/hg19_random.nix</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign3-version}/hg19_random.nix</dst>
                             <src>${basedir}/links/${novoalign3-version}/hg19_random.nix</src>
                         </link>
                         <link>          
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign2-version}/hg19_random.nix</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign2-version}/hg19_random.nix</dst>
                             <src>${basedir}/links/${novoalign2-version}/hg19_random.nix</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data/test/PCSI0022C.val.1.fastq.gz</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022C.val.1.fastq.gz</dst>
                             <src>${basedir}/links/PCSI0022C.val.1.fastq.gz</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data/test/PCSI0022C.val.2.fastq.gz</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022C.val.2.fastq.gz</dst>
                             <src>${basedir}/links/PCSI0022C.val.2.fastq.gz</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data/test/PCSI0022X.val.1.fastq.gz</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022X.val.1.fastq.gz</dst>
                             <src>${basedir}/links/PCSI0022X.val.1.fastq.gz</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data/test/PCSI0022X.val.2.fastq.gz</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022X.val.2.fastq.gz</dst>
                             <src>${basedir}/links/PCSI0022X.val.2.fastq.gz</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign2-version}/novoalign.lic</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign2-version}/novoalign.lic</dst>
                             <src>${basedir}/links/novoalign.lic</src>
                         </link>
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/bin/novocraft${novoalign3-version}/novoalign.lic</dst>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign3-version}/novoalign.lic</dst>
                             <src>${basedir}/links/novoalign.lic</src>
                         </link>
                     </links>
-                    <!--<composeClasses>
-                     <dst>${project.build.directory}/Workflow_Bundle_${workflow-name}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${workflow-directory-name}/${project.version}/data</dst>
-                       <packages>
-                         <package>
-                            <name>symlinks</name>
-                            <src>${basedir}/workflow/links</src>
-                         </package>
-                       </packages>
-                    </composeClasses>-->
                 </configuration>
             </plugin> 
         </plugins>
