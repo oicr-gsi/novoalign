@@ -19,6 +19,9 @@
         <novoalign2-version>V2.07.15b</novoalign2-version>
         <novoalign3-version>V3.02.04</novoalign3-version>
         <picard-version>1.72</picard-version>
+	<cutadapt-version>1.4.1</cutadapt-version>
+	<fastqvalidator-version>0.1.1a</fastqvalidator-version>
+	<python-version>2.7</python-version>
     </properties>
 
     <dependencies>
@@ -41,7 +44,7 @@
         <dependency>
             <groupId>edu.umich.sph.genome</groupId>
             <artifactId>fastQValidator</artifactId>
-            <version>0.1.1a</version>
+	    <version>${fastqvalidator-version}</version>
             <type>zip</type>
         </dependency> 
     </dependencies>
