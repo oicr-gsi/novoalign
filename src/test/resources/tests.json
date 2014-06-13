@@ -8,7 +8,7 @@
     },
     "tests": [
         {
-            "input_config": "workflow_test_01.ini"
+            "input_config": "workflow_V2.07.15b.ini"
         }
     ]
 }
