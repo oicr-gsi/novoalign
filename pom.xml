@@ -17,7 +17,7 @@
     <name>decider-genomic-alignment-novoalign</name>
     
     <properties>
-        <workflow-version>2.0</workflow-version>
+        <workflow-version>2.1</workflow-version>
         <main-class>ca.on.oicr.pde.deciders.GenomicAlignmentNovoalignDecider</main-class>
     </properties>
 

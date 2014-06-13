@@ -10,22 +10,30 @@
     "tests": [
         {
             "id": "AshPC study test",
-            "studies": ["AshPC"]
+            "studies": ["AshPC"],
+            "parameters": {
+                "--before-date": "2013-11-19"
+             }
         },
         {
             "id": "PCSI sample test",
             "parameters": {
-                "--root-sample-name": "PCSI_0005"
+                "--root-sample-name": "PCSI_0005",
+                "--before-date": "2013-11-19"
             }
         },
         {
             "id": "sequencer run test",
-            "sequencerRuns": ["120912_h804_0094_BD181GACXX"]
+            "sequencerRuns": ["120912_h804_0094_BD181GACXX"],
+            "parameters": {
+                "--before-date": "2013-11-19"
+             }
         },
         {
             "id": "OBC sample test",
             "parameters": {
-                "--root-sample-name": "OBC_0001"
+                "--root-sample-name": "OBC_0001",
+                "--before-date": "2013-11-19"
             }
         }
     ]
