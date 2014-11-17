@@ -7,7 +7,6 @@
         <groupId>ca.on.oicr.pde.workflows</groupId>
         <artifactId>workflows</artifactId>
         <version>2014.1.0</version>
-        <relativePath>../workflow-parent-pom.xml</relativePath>
     </parent>
 
     <artifactId>GenomicAlignmentNovoalign</artifactId>
