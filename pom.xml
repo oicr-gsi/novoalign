@@ -7,7 +7,6 @@
         <groupId>ca.on.oicr.pde.deciders</groupId>
         <artifactId>deciders</artifactId>
         <version>2014.1.0</version>
-        <relativePath>../decider-parent-pom.xml</relativePath>
     </parent>
 
     <artifactId>GenomicAlignmentNovoalign</artifactId>
