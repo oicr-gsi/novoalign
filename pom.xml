@@ -6,7 +6,7 @@
     <parent>
         <groupId>ca.on.oicr.pde.workflows</groupId>
         <artifactId>workflows</artifactId>
-        <version>2014.1.0</version>
+        <version>2014.3.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>GenomicAlignmentNovoalign</artifactId>
