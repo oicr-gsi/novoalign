@@ -17,7 +17,7 @@
     <name>${display-name}</name>
 
     <properties>
-        <workflow-directory-name>${artifactId}</workflow-directory-name>
+        <workflow-directory-name>${project.artifactId}</workflow-directory-name>
         <novoalign2-version>V2.07.15b</novoalign2-version>
         <novoalign3-version>V3.02.04</novoalign3-version>
         <picard-version>1.72</picard-version>
