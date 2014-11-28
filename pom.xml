@@ -31,23 +31,27 @@
             <groupId>picard</groupId>
             <artifactId>picard-tools</artifactId>
             <version>${picard-version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>novocraft</groupId>
             <artifactId>novocraft</artifactId>
             <version>${novoalign2-version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>novocraft</groupId>
             <artifactId>novocraftV3</artifactId>
             <version>${novoalign3-version}</version>
             <type>zip</type>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>edu.umich.sph.genome</groupId>
             <artifactId>fastQValidator</artifactId>
             <version>${fastqvalidator-version}</version>
             <type>zip</type>
+            <scope>provided</scope>
         </dependency> 
     </dependencies>
 
