@@ -2,13 +2,10 @@ package ca.on.oicr.pde.workflows;
 
 import ca.on.oicr.pde.utilities.workflows.OicrWorkflow;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import net.sourceforge.seqware.common.util.Log;
+import net.sourceforge.seqware.pipeline.workflowV2.model.Command;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
 import net.sourceforge.seqware.pipeline.workflowV2.model.SqwFile;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Workflow;
-import net.sourceforge.seqware.pipeline.workflowV2.model.Command;
 /**
  *
  * @author pruzanov, mtaschuk
