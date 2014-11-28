@@ -56,7 +56,6 @@
             <plugin>
                 <groupId>com.pyx4j</groupId>
                 <artifactId>maven-junction-plugin</artifactId>
-                <version>1.0.3</version>
                 <configuration>
                     <links>   
                         <!-- link the reference files for Novoalign by client to webapp directory -->
