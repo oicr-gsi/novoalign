@@ -31,12 +31,14 @@
             <groupId>picard</groupId>
             <artifactId>picard-tools</artifactId>
             <version>${picard-version}</version>
+            <type>zip</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>novocraft</groupId>
             <artifactId>novocraft</artifactId>
             <version>${novoalign2-version}</version>
+            <type>zip</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -61,7 +63,7 @@
                 <groupId>com.pyx4j</groupId>
                 <artifactId>maven-junction-plugin</artifactId>
                 <configuration>
-                    <links>   
+                    <links>
                         <!-- link the reference files for Novoalign by client to webapp directory -->
                         <link>          
                             <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign3-version}/hg19_random.nix</dst>
