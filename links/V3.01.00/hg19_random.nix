@@ -1,1 +1,0 @@
-/oicr/data/reference/genomes/homo_sapiens_mc/UCSC/hg19_random/Genomic/novocraft/3.01.00/hg19_random.nix
