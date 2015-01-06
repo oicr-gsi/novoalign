@@ -44,13 +44,11 @@ public class GenomicAlignmentNovoalignDecider extends OicrDecider {
     //For Read Group
 //    private String rg_library = "library";
 //    private String rg_platform = "illumina";
-//    private String rg_platform_unit = "flowcell-barcode_lane";
 //    private String rg_sample_name = "sample";
     //Hotfix addition
 
     private String rg_library;
     private String rg_platform;
-    private String rg_platform_unit;
     private String rg_sample_name;
 
     private String ius_accession;
@@ -197,9 +195,6 @@ public class GenomicAlignmentNovoalignDecider extends OicrDecider {
         if (this.options.has("rg-platform")) {
             this.rg_platform = options.valueOf("rg-platform").toString();
         }
-        if (this.options.has("rg-platform-unit")) {
-            this.rg_platform_unit = options.valueOf("rg-platform-unit").toString();
-        }
         if (this.options.has("rg-sample-name")) {
             this.rg_sample_name = options.valueOf("rg-sample-name").toString();
         }
@@ -266,11 +261,6 @@ public class GenomicAlignmentNovoalignDecider extends OicrDecider {
         FileAttributes rv = new FileAttributes(returnValue, returnValue.getFiles().get(0));
         this.rg_library = rv.getLibrarySample() + rv.getLimsValue(Lims.GROUP_ID);
         this.rg_platform = "illumina";
-        this.rg_platform_unit = rv.getSequencerRun()
-                + "-"
-                + rv.getBarcode()
-                + "_"
-                + lane;
         this.rg_sample_name = rv.getDonor() + rv.getLimsValue(Lims.GROUP_ID);
 
         return super.checkFileDetails(returnValue, fm);
@@ -372,7 +362,6 @@ public class GenomicAlignmentNovoalignDecider extends OicrDecider {
         //For Read Group
         iniFileMap.put("rg_library", this.rg_library);
         iniFileMap.put("rg_platform", this.rg_platform);
-        iniFileMap.put("rg_platform_unit", this.rg_platform_unit);
         iniFileMap.put("rg_sample_name", this.rg_sample_name);
         //Hotfix addition
         iniFileMap.put("queue", this.queue);
