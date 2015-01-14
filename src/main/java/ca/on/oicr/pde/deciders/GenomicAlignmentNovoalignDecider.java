@@ -12,6 +12,7 @@ import net.sourceforge.seqware.common.module.FileMetadata;
 import net.sourceforge.seqware.common.hibernate.FindAllTheFiles.Header;
 import net.sourceforge.seqware.common.module.ReturnValue;
 import net.sourceforge.seqware.common.util.Log;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -259,9 +260,10 @@ public class GenomicAlignmentNovoalignDecider extends OicrDecider {
         }
 
         FileAttributes rv = new FileAttributes(returnValue, returnValue.getFiles().get(0));
-        this.rg_library = rv.getLibrarySample() + rv.getLimsValue(Lims.GROUP_ID);
+        String groupId = StringUtils.defaultIfBlank(rv.getLimsValue(Lims.GROUP_ID), "");
+        this.rg_library = rv.getLibrarySample() + groupId;
         this.rg_platform = "illumina";
-        this.rg_sample_name = rv.getDonor() + rv.getLimsValue(Lims.GROUP_ID);
+        this.rg_sample_name = rv.getDonor() + groupId;
 
         return super.checkFileDetails(returnValue, fm);
     }
