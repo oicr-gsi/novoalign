@@ -1,6 +1,6 @@
 {
     "defaultDescription": "Novoalign decider test",
-    "defaultMetricsDirectory": "/.mounts/labs/PDE/data/RegressionTests/Novoalign/decider/development",
+    "defaultMetricsResources": "/expected_output/development/",
     "defaultParameters": {
         "--output-path": "./"
     },
@@ -13,7 +13,7 @@
             "studies": ["AshPC"],
             "parameters": {
                 "--before-date": "2013-11-19"
-             }
+            }
         },
         {
             "id": "PCSI sample test",
@@ -27,7 +27,7 @@
             "sequencerRuns": ["120912_h804_0094_BD181GACXX"],
             "parameters": {
                 "--before-date": "2013-11-19"
-             }
+            }
         },
         {
             "id": "OBC sample test",
