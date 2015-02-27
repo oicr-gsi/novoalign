@@ -8,7 +8,7 @@
     <workflow_class path="${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${version}/classes/${workflow-package}/${project.artifactId}Workflow.java"/>
     <config path="${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${version}/config/workflow_${novoalign2-version}.ini"/>
     <build command="ant -f ${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${version}/build.xml"/>
-    <requirements compute="single" memory="20M" network="local"  workflow_engine="Oozie-SGE" workflow_type="java"/>
+    <requirements compute="single" memory="20M" network="local"  workflow_engine="Oozie" workflow_type="java"/>
   </workflow>
 <workflow name="${project.artifactId}_${novoalign3-version}" version="${novoalign3-version}" seqware_version="${seqware-version}"
   basedir="${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${version}">
@@ -19,7 +19,7 @@
     <workflow_class path="${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${version}/classes/${workflow-package}/${project.artifactId}Workflow.java"/>
     <config path="${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${version}/config/workflow_${novoalign3-version}.ini"/>
     <build command="ant -f ${workflow_bundle_dir}/Workflow_Bundle_${project.artifactId}/${version}/build.xml"/>
-    <requirements compute="single" memory="20M" network="local"  workflow_engine="Oozie-SGE" workflow_type="java"/>
+    <requirements compute="single" memory="20M" network="local"  workflow_engine="Oozie" workflow_type="java"/>
   </workflow>
 </bundle>
 
