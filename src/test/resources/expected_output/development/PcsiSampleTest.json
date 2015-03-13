@@ -14,7 +14,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -133,7 +133,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -252,7 +252,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -371,7 +371,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -490,7 +490,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -609,7 +609,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -695,7 +695,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -913,7 +913,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -999,7 +999,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -1086,7 +1086,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -1173,7 +1173,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -1260,7 +1260,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -1347,7 +1347,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -1434,7 +1434,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -1521,7 +1521,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -1640,7 +1640,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -1759,7 +1759,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -1878,7 +1878,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -1997,7 +1997,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -2116,7 +2116,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -2235,7 +2235,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -2354,7 +2354,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -2475,7 +2475,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -2596,7 +2596,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -2717,7 +2717,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -2838,7 +2838,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -2959,7 +2959,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -3080,7 +3080,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -3201,7 +3201,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -3322,7 +3322,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -3443,7 +3443,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -3564,7 +3564,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -3685,7 +3685,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -3806,7 +3806,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -3927,7 +3927,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -4048,7 +4048,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -4169,7 +4169,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -4290,7 +4290,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -4377,7 +4377,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -4464,7 +4464,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -4551,7 +4551,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -4638,7 +4638,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -4725,7 +4725,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -4812,7 +4812,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -4899,7 +4899,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -4986,7 +4986,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -5073,7 +5073,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -5159,7 +5159,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -5245,7 +5245,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -5331,7 +5331,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -5417,7 +5417,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -5503,7 +5503,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -5589,7 +5589,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -5675,7 +5675,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -5761,7 +5761,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -5882,7 +5882,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -6003,7 +6003,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -6124,7 +6124,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -6245,7 +6245,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -6366,7 +6366,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -6487,7 +6487,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -6608,7 +6608,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -6729,7 +6729,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -6850,7 +6850,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -6971,7 +6971,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -7090,7 +7090,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -7213,7 +7213,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -7336,7 +7336,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -7488,7 +7488,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -7611,7 +7611,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -7734,7 +7734,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -7857,7 +7857,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -7980,7 +7980,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -8103,7 +8103,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -8226,7 +8226,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -8349,7 +8349,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -8472,7 +8472,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -8595,7 +8595,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -8718,7 +8718,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -8841,7 +8841,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -8964,7 +8964,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -9087,7 +9087,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -9210,7 +9210,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -9331,7 +9331,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
@@ -9450,7 +9450,7 @@
     "workflowIni" : {
       "barcode" : "NOINDEX,NOINDEX",
       "bundled_jre" : "jre1.7.0_51",
-      "bundled_seqware" : "seqware-distribution-1.1.0-rc.0-full.jar",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
       "colorspace" : "0",
       "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
       "cutadapt_r1_other_params" : "null",
