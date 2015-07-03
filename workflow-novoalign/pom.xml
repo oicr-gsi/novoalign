@@ -24,6 +24,11 @@
         <cutadapt-version>1.4.1</cutadapt-version>
         <fastqvalidator-version>0.1.1a</fastqvalidator-version>
         <python-version>2.7</python-version>
+        <cutadapt-path>/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt</cutadapt-path>
+        <python-path>/oicr/local/sw/Python-2.7.2/bin/python2.7</python-path>
+        <novoalign2-index>/oicr/data/reference/genomes/homo_sapiens_mc/UCSC/hg19_random/Genomic/novocraft/2.07.15b/hg19_random.nix</novoalign2-index>
+        <novoalign3-index>/oicr/data/reference/genomes/homo_sapiens_mc/UCSC/hg19_random/Genomic/novocraft/3.02.04/hg19_random.nix</novoalign3-index>
+        <novoalign-license>/.mounts/labs/PDE/private/novocraft.lic</novoalign-license>
     </properties>
 
     <dependencies>
@@ -64,38 +69,14 @@
                 <artifactId>maven-junction-plugin</artifactId>
                 <configuration>
                     <links>
-                        <!-- link the reference files for Novoalign by client to webapp directory -->
-                        <link>          
-                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign3-version}/hg19_random.nix</dst>
-                            <src>${basedir}/links/${novoalign3-version}/hg19_random.nix</src>
-                        </link>
-                        <link>          
-                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign2-version}/hg19_random.nix</dst>
-                            <src>${basedir}/links/${novoalign2-version}/hg19_random.nix</src>
-                        </link>
+                        <!--link up the licenses next to the executables-->
                         <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022C.val.1.fastq.gz</dst>
-                            <src>${basedir}/links/PCSI0022C.val.1.fastq.gz</src>
-                        </link>
-                        <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022C.val.2.fastq.gz</dst>
-                            <src>${basedir}/links/PCSI0022C.val.2.fastq.gz</src>
-                        </link>
-                        <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022X.val.1.fastq.gz</dst>
-                            <src>${basedir}/links/PCSI0022X.val.1.fastq.gz</src>
-                        </link>
-                        <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/data/test/PCSI0022X.val.2.fastq.gz</dst>
-                            <src>${basedir}/links/PCSI0022X.val.2.fastq.gz</src>
+                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign3-version}/novoalign.lic</dst>
+                            <src>${novoalign-license}</src>
                         </link>
                         <link>
                             <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign2-version}/novoalign.lic</dst>
-                            <src>${basedir}/links/novoalign.lic</src>
-                        </link>
-                        <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign3-version}/novoalign.lic</dst>
-                            <src>${basedir}/links/novoalign.lic</src>
+                            <src>${novoalign-license}</src>
                         </link>
                     </links>
                 </configuration>
