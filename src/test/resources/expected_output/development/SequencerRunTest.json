@@ -1,0 +1,966 @@
+{
+  "workflowRunCount" : 8,
+  "studies" : [ "SingleCellSeq" ],
+  "sequencerRuns" : [ "120912_h804_0094_BD181GACXX" ],
+  "lanes" : [ "120912_h804_0094_BD181GACXX_lane_1", "120912_h804_0094_BD181GACXX_lane_2", "120912_h804_0094_BD181GACXX_lane_3", "120912_h804_0094_BD181GACXX_lane_4", "120912_h804_0094_BD181GACXX_lane_5", "120912_h804_0094_BD181GACXX_lane_6", "120912_h804_0094_BD181GACXX_lane_7", "120912_h804_0094_BD181GACXX_lane_8" ],
+  "samples" : [ "SCS_0006_nn_n_PE_300_WG", "SCS_0007_nn_n_PE_300_WG", "SCS_0008_nn_n_PE_300_WG" ],
+  "workflows" : [ "CASAVA-RTA" ],
+  "processingAlgorithms" : [ "BCLToFastq" ],
+  "fileMetaTypes" : [ "chemical/seq-na-fastq-gzip" ],
+  "maxInputFiles" : 2,
+  "minInputFiles" : 2,
+  "totalInputFiles" : 16,
+  "workflowRuns" : [ {
+    "workflowIni" : {
+      "barcode" : "NOINDEX,NOINDEX",
+      "bundled_jre" : "jre1.7.0_51",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
+      "colorspace" : "0",
+      "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
+      "cutadapt_r1_other_params" : "null",
+      "cutadapt_r2_other_params" : "null",
+      "data_dir" : "data",
+      "do_trim" : "false",
+      "fastq_inputs_end_1" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_1/Project_na/Sample_SWID_278082_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278082_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L001_R1_001.fastq.gz",
+      "fastq_inputs_end_2" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_1/Project_na/Sample_SWID_278082_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278082_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L001_R2_001.fastq.gz",
+      "fastq_validator" : "${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/2.2.1/bin/fastQValidator_0.1.1a/fastQValidator/bin/fastQValidator",
+      "fastq_validator_additional_parameters" : "--disableSeqIDCheck --minReadLen 0",
+      "ius_accession" : "278082,278082",
+      "lane" : "1,1",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "novoalign_additional_parameters" : "-r ALL 5 -R 0 -o SAM",
+      "novoalign_expected_insert" : "-i PE 250,50",
+      "novoalign_index" : "-d ${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/0.10.4/data/indexes/novoalign/hg19/hg19_random/hg19_random.nix",
+      "novoalign_input_format" : "",
+      "novoalign_memory" : "16000",
+      "novoalign_r1_adapter_trim" : "-a AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "novoalign_r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "novoalign_slots" : "1",
+      "novoalign_threads" : "-c 8",
+      "novoalign_threshold" : "null",
+      "novocraft_version" : "V2.07.15b",
+      "output_dir" : "seqware-results",
+      "picard_memory" : "3000",
+      "picard_slots" : "1",
+      "picard_threads" : "1",
+      "picardconvert" : "picard-tools-1.72/SamFormatConverter.jar",
+      "picardmerge_slots" : "1",
+      "picardrg" : "picard-tools-1.72/AddOrReplaceReadGroups.jar",
+      "picardsort" : "picard-tools-1.72/SortSam.jar",
+      "python" : "/oicr/local/sw/Python-2.7.2/bin/python2.7",
+      "queue" : "production",
+      "r1_adapter_trim" : "AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "rg_library" : "SCS_0006_nn_n_PE_300_WG",
+      "rg_platform" : "illumina",
+      "rg_sample_name" : "SCS_0006",
+      "run_ends" : "2",
+      "sequencer_run_name" : "120912_h804_0094_BD181GACXX,120912_h804_0094_BD181GACXX",
+      "tmp_dir" : "tmp",
+      "trim_mem_mb" : "16000",
+      "trim_min_length" : "10",
+      "trim_min_quality" : "20"
+    },
+    "files" : [ {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0006_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7122", "7489", "7490", "7491" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1068_6_1", "1130_1_2", "1130_2_2", "1130_3_2" ] ],
+        "sample.geo_template_id" : [ [ "21558" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -1604762184
+    }, {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0006_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7122", "7489", "7490", "7491" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1068_6_1", "1130_1_2", "1130_2_2", "1130_3_2" ] ],
+        "sample.geo_template_id" : [ [ "21558" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_1" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "1" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -2110320809
+    } ]
+  }, {
+    "workflowIni" : {
+      "barcode" : "NOINDEX,NOINDEX",
+      "bundled_jre" : "jre1.7.0_51",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
+      "colorspace" : "0",
+      "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
+      "cutadapt_r1_other_params" : "null",
+      "cutadapt_r2_other_params" : "null",
+      "data_dir" : "data",
+      "do_trim" : "false",
+      "fastq_inputs_end_1" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_2/Project_na/Sample_SWID_278080_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278080_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L002_R1_001.fastq.gz",
+      "fastq_inputs_end_2" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_2/Project_na/Sample_SWID_278080_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278080_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L002_R2_001.fastq.gz",
+      "fastq_validator" : "${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/2.2.1/bin/fastQValidator_0.1.1a/fastQValidator/bin/fastQValidator",
+      "fastq_validator_additional_parameters" : "--disableSeqIDCheck --minReadLen 0",
+      "ius_accession" : "278080,278080",
+      "lane" : "2,2",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "novoalign_additional_parameters" : "-r ALL 5 -R 0 -o SAM",
+      "novoalign_expected_insert" : "-i PE 250,50",
+      "novoalign_index" : "-d ${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/0.10.4/data/indexes/novoalign/hg19/hg19_random/hg19_random.nix",
+      "novoalign_input_format" : "",
+      "novoalign_memory" : "16000",
+      "novoalign_r1_adapter_trim" : "-a AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "novoalign_r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "novoalign_slots" : "1",
+      "novoalign_threads" : "-c 8",
+      "novoalign_threshold" : "null",
+      "novocraft_version" : "V2.07.15b",
+      "output_dir" : "seqware-results",
+      "picard_memory" : "3000",
+      "picard_slots" : "1",
+      "picard_threads" : "1",
+      "picardconvert" : "picard-tools-1.72/SamFormatConverter.jar",
+      "picardmerge_slots" : "1",
+      "picardrg" : "picard-tools-1.72/AddOrReplaceReadGroups.jar",
+      "picardsort" : "picard-tools-1.72/SortSam.jar",
+      "python" : "/oicr/local/sw/Python-2.7.2/bin/python2.7",
+      "queue" : "production",
+      "r1_adapter_trim" : "AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "rg_library" : "SCS_0006_nn_n_PE_300_WG",
+      "rg_platform" : "illumina",
+      "rg_sample_name" : "SCS_0006",
+      "run_ends" : "2",
+      "sequencer_run_name" : "120912_h804_0094_BD181GACXX,120912_h804_0094_BD181GACXX",
+      "tmp_dir" : "tmp",
+      "trim_mem_mb" : "16000",
+      "trim_min_length" : "10",
+      "trim_min_quality" : "20"
+    },
+    "files" : [ {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0006_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7122", "7489", "7490", "7491" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1068_6_1", "1130_1_2", "1130_2_2", "1130_3_2" ] ],
+        "sample.geo_template_id" : [ [ "21558" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_2" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "2" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -192144100
+    }, {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0006_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7122", "7489", "7490", "7491" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1068_6_1", "1130_1_2", "1130_2_2", "1130_3_2" ] ],
+        "sample.geo_template_id" : [ [ "21558" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_2" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "2" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -697702725
+    } ]
+  }, {
+    "workflowIni" : {
+      "barcode" : "NOINDEX,NOINDEX",
+      "bundled_jre" : "jre1.7.0_51",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
+      "colorspace" : "0",
+      "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
+      "cutadapt_r1_other_params" : "null",
+      "cutadapt_r2_other_params" : "null",
+      "data_dir" : "data",
+      "do_trim" : "false",
+      "fastq_inputs_end_1" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_3/Project_na/Sample_SWID_278078_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278078_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L003_R1_001.fastq.gz",
+      "fastq_inputs_end_2" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_3/Project_na/Sample_SWID_278078_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278078_SCS_0006_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L003_R2_001.fastq.gz",
+      "fastq_validator" : "${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/2.2.1/bin/fastQValidator_0.1.1a/fastQValidator/bin/fastQValidator",
+      "fastq_validator_additional_parameters" : "--disableSeqIDCheck --minReadLen 0",
+      "ius_accession" : "278078,278078",
+      "lane" : "3,3",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "novoalign_additional_parameters" : "-r ALL 5 -R 0 -o SAM",
+      "novoalign_expected_insert" : "-i PE 250,50",
+      "novoalign_index" : "-d ${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/0.10.4/data/indexes/novoalign/hg19/hg19_random/hg19_random.nix",
+      "novoalign_input_format" : "",
+      "novoalign_memory" : "16000",
+      "novoalign_r1_adapter_trim" : "-a AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "novoalign_r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "novoalign_slots" : "1",
+      "novoalign_threads" : "-c 8",
+      "novoalign_threshold" : "null",
+      "novocraft_version" : "V2.07.15b",
+      "output_dir" : "seqware-results",
+      "picard_memory" : "3000",
+      "picard_slots" : "1",
+      "picard_threads" : "1",
+      "picardconvert" : "picard-tools-1.72/SamFormatConverter.jar",
+      "picardmerge_slots" : "1",
+      "picardrg" : "picard-tools-1.72/AddOrReplaceReadGroups.jar",
+      "picardsort" : "picard-tools-1.72/SortSam.jar",
+      "python" : "/oicr/local/sw/Python-2.7.2/bin/python2.7",
+      "queue" : "production",
+      "r1_adapter_trim" : "AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "rg_library" : "SCS_0006_nn_n_PE_300_WG",
+      "rg_platform" : "illumina",
+      "rg_sample_name" : "SCS_0006",
+      "run_ends" : "2",
+      "sequencer_run_name" : "120912_h804_0094_BD181GACXX,120912_h804_0094_BD181GACXX",
+      "tmp_dir" : "tmp",
+      "trim_mem_mb" : "16000",
+      "trim_min_length" : "10",
+      "trim_min_quality" : "20"
+    },
+    "files" : [ {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0006_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7122", "7489", "7490", "7491" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1068_6_1", "1130_1_2", "1130_2_2", "1130_3_2" ] ],
+        "sample.geo_template_id" : [ [ "21558" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_3" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "3" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -1337105558
+    }, {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0006_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7122", "7489", "7490", "7491" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1068_6_1", "1130_1_2", "1130_2_2", "1130_3_2" ] ],
+        "sample.geo_template_id" : [ [ "21558" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_3" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "3" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -1842664183
+    } ]
+  }, {
+    "workflowIni" : {
+      "barcode" : "NOINDEX,NOINDEX",
+      "bundled_jre" : "jre1.7.0_51",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
+      "colorspace" : "0",
+      "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
+      "cutadapt_r1_other_params" : "null",
+      "cutadapt_r2_other_params" : "null",
+      "data_dir" : "data",
+      "do_trim" : "false",
+      "fastq_inputs_end_1" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_4/Project_na/Sample_SWID_278119_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278119_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L004_R1_001.fastq.gz",
+      "fastq_inputs_end_2" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_4/Project_na/Sample_SWID_278119_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278119_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L004_R2_001.fastq.gz",
+      "fastq_validator" : "${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/2.2.1/bin/fastQValidator_0.1.1a/fastQValidator/bin/fastQValidator",
+      "fastq_validator_additional_parameters" : "--disableSeqIDCheck --minReadLen 0",
+      "ius_accession" : "278119,278119",
+      "lane" : "4,4",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "novoalign_additional_parameters" : "-r ALL 5 -R 0 -o SAM",
+      "novoalign_expected_insert" : "-i PE 250,50",
+      "novoalign_index" : "-d ${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/0.10.4/data/indexes/novoalign/hg19/hg19_random/hg19_random.nix",
+      "novoalign_input_format" : "",
+      "novoalign_memory" : "16000",
+      "novoalign_r1_adapter_trim" : "-a AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "novoalign_r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "novoalign_slots" : "1",
+      "novoalign_threads" : "-c 8",
+      "novoalign_threshold" : "null",
+      "novocraft_version" : "V2.07.15b",
+      "output_dir" : "seqware-results",
+      "picard_memory" : "3000",
+      "picard_slots" : "1",
+      "picard_threads" : "1",
+      "picardconvert" : "picard-tools-1.72/SamFormatConverter.jar",
+      "picardmerge_slots" : "1",
+      "picardrg" : "picard-tools-1.72/AddOrReplaceReadGroups.jar",
+      "picardsort" : "picard-tools-1.72/SortSam.jar",
+      "python" : "/oicr/local/sw/Python-2.7.2/bin/python2.7",
+      "queue" : "production",
+      "r1_adapter_trim" : "AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "rg_library" : "SCS_0007_nn_n_PE_300_WG",
+      "rg_platform" : "illumina",
+      "rg_sample_name" : "SCS_0007",
+      "run_ends" : "2",
+      "sequencer_run_name" : "120912_h804_0094_BD181GACXX,120912_h804_0094_BD181GACXX",
+      "tmp_dir" : "tmp",
+      "trim_mem_mb" : "16000",
+      "trim_min_length" : "10",
+      "trim_min_quality" : "20"
+    },
+    "files" : [ {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0007_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7134", "7492", "7493", "7494" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1070_6_1", "1130_4_2", "1130_5_2", "1130_6_2" ] ],
+        "sample.geo_template_id" : [ [ "21560" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_4" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "4" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -1087791397
+    }, {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0007_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7134", "7492", "7493", "7494" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1070_6_1", "1130_4_2", "1130_5_2", "1130_6_2" ] ],
+        "sample.geo_template_id" : [ [ "21560" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_4" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "4" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -582232772
+    } ]
+  }, {
+    "workflowIni" : {
+      "barcode" : "NOINDEX,NOINDEX",
+      "bundled_jre" : "jre1.7.0_51",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
+      "colorspace" : "0",
+      "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
+      "cutadapt_r1_other_params" : "null",
+      "cutadapt_r2_other_params" : "null",
+      "data_dir" : "data",
+      "do_trim" : "false",
+      "fastq_inputs_end_1" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_5/Project_na/Sample_SWID_278117_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278117_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L005_R1_001.fastq.gz",
+      "fastq_inputs_end_2" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_5/Project_na/Sample_SWID_278117_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278117_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L005_R2_001.fastq.gz",
+      "fastq_validator" : "${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/2.2.1/bin/fastQValidator_0.1.1a/fastQValidator/bin/fastQValidator",
+      "fastq_validator_additional_parameters" : "--disableSeqIDCheck --minReadLen 0",
+      "ius_accession" : "278117,278117",
+      "lane" : "5,5",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "novoalign_additional_parameters" : "-r ALL 5 -R 0 -o SAM",
+      "novoalign_expected_insert" : "-i PE 250,50",
+      "novoalign_index" : "-d ${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/0.10.4/data/indexes/novoalign/hg19/hg19_random/hg19_random.nix",
+      "novoalign_input_format" : "",
+      "novoalign_memory" : "16000",
+      "novoalign_r1_adapter_trim" : "-a AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "novoalign_r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "novoalign_slots" : "1",
+      "novoalign_threads" : "-c 8",
+      "novoalign_threshold" : "null",
+      "novocraft_version" : "V2.07.15b",
+      "output_dir" : "seqware-results",
+      "picard_memory" : "3000",
+      "picard_slots" : "1",
+      "picard_threads" : "1",
+      "picardconvert" : "picard-tools-1.72/SamFormatConverter.jar",
+      "picardmerge_slots" : "1",
+      "picardrg" : "picard-tools-1.72/AddOrReplaceReadGroups.jar",
+      "picardsort" : "picard-tools-1.72/SortSam.jar",
+      "python" : "/oicr/local/sw/Python-2.7.2/bin/python2.7",
+      "queue" : "production",
+      "r1_adapter_trim" : "AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "rg_library" : "SCS_0007_nn_n_PE_300_WG",
+      "rg_platform" : "illumina",
+      "rg_sample_name" : "SCS_0007",
+      "run_ends" : "2",
+      "sequencer_run_name" : "120912_h804_0094_BD181GACXX,120912_h804_0094_BD181GACXX",
+      "tmp_dir" : "tmp",
+      "trim_mem_mb" : "16000",
+      "trim_min_length" : "10",
+      "trim_min_quality" : "20"
+    },
+    "files" : [ {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0007_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7134", "7492", "7493", "7494" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1070_6_1", "1130_4_2", "1130_5_2", "1130_6_2" ] ],
+        "sample.geo_template_id" : [ [ "21560" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_5" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "5" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : 324826687
+    }, {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0007_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7134", "7492", "7493", "7494" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1070_6_1", "1130_4_2", "1130_5_2", "1130_6_2" ] ],
+        "sample.geo_template_id" : [ [ "21560" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_5" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "5" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : 830385312
+    } ]
+  }, {
+    "workflowIni" : {
+      "barcode" : "NOINDEX,NOINDEX",
+      "bundled_jre" : "jre1.7.0_51",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
+      "colorspace" : "0",
+      "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
+      "cutadapt_r1_other_params" : "null",
+      "cutadapt_r2_other_params" : "null",
+      "data_dir" : "data",
+      "do_trim" : "false",
+      "fastq_inputs_end_1" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_6/Project_na/Sample_SWID_278115_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278115_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L006_R1_001.fastq.gz",
+      "fastq_inputs_end_2" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_6/Project_na/Sample_SWID_278115_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278115_SCS_0007_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L006_R2_001.fastq.gz",
+      "fastq_validator" : "${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/2.2.1/bin/fastQValidator_0.1.1a/fastQValidator/bin/fastQValidator",
+      "fastq_validator_additional_parameters" : "--disableSeqIDCheck --minReadLen 0",
+      "ius_accession" : "278115,278115",
+      "lane" : "6,6",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "novoalign_additional_parameters" : "-r ALL 5 -R 0 -o SAM",
+      "novoalign_expected_insert" : "-i PE 250,50",
+      "novoalign_index" : "-d ${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/0.10.4/data/indexes/novoalign/hg19/hg19_random/hg19_random.nix",
+      "novoalign_input_format" : "",
+      "novoalign_memory" : "16000",
+      "novoalign_r1_adapter_trim" : "-a AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "novoalign_r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "novoalign_slots" : "1",
+      "novoalign_threads" : "-c 8",
+      "novoalign_threshold" : "null",
+      "novocraft_version" : "V2.07.15b",
+      "output_dir" : "seqware-results",
+      "picard_memory" : "3000",
+      "picard_slots" : "1",
+      "picard_threads" : "1",
+      "picardconvert" : "picard-tools-1.72/SamFormatConverter.jar",
+      "picardmerge_slots" : "1",
+      "picardrg" : "picard-tools-1.72/AddOrReplaceReadGroups.jar",
+      "picardsort" : "picard-tools-1.72/SortSam.jar",
+      "python" : "/oicr/local/sw/Python-2.7.2/bin/python2.7",
+      "queue" : "production",
+      "r1_adapter_trim" : "AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "rg_library" : "SCS_0007_nn_n_PE_300_WG",
+      "rg_platform" : "illumina",
+      "rg_sample_name" : "SCS_0007",
+      "run_ends" : "2",
+      "sequencer_run_name" : "120912_h804_0094_BD181GACXX,120912_h804_0094_BD181GACXX",
+      "tmp_dir" : "tmp",
+      "trim_mem_mb" : "16000",
+      "trim_min_length" : "10",
+      "trim_min_quality" : "20"
+    },
+    "files" : [ {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0007_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7134", "7492", "7493", "7494" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1070_6_1", "1130_4_2", "1130_5_2", "1130_6_2" ] ],
+        "sample.geo_template_id" : [ [ "21560" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_6" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "6" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -2051963900
+    }, {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0007_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7134", "7492", "7493", "7494" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1070_6_1", "1130_4_2", "1130_5_2", "1130_6_2" ] ],
+        "sample.geo_template_id" : [ [ "21560" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_6" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "6" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : 1737444771
+    } ]
+  }, {
+    "workflowIni" : {
+      "barcode" : "NOINDEX,NOINDEX",
+      "bundled_jre" : "jre1.7.0_51",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
+      "colorspace" : "0",
+      "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
+      "cutadapt_r1_other_params" : "null",
+      "cutadapt_r2_other_params" : "null",
+      "data_dir" : "data",
+      "do_trim" : "false",
+      "fastq_inputs_end_1" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_7/Project_na/Sample_SWID_278113_SCS_0008_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278113_SCS_0008_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L007_R1_001.fastq.gz",
+      "fastq_inputs_end_2" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_7/Project_na/Sample_SWID_278113_SCS_0008_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278113_SCS_0008_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L007_R2_001.fastq.gz",
+      "fastq_validator" : "${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/2.2.1/bin/fastQValidator_0.1.1a/fastQValidator/bin/fastQValidator",
+      "fastq_validator_additional_parameters" : "--disableSeqIDCheck --minReadLen 0",
+      "ius_accession" : "278113,278113",
+      "lane" : "7,7",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "novoalign_additional_parameters" : "-r ALL 5 -R 0 -o SAM",
+      "novoalign_expected_insert" : "-i PE 250,50",
+      "novoalign_index" : "-d ${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/0.10.4/data/indexes/novoalign/hg19/hg19_random/hg19_random.nix",
+      "novoalign_input_format" : "",
+      "novoalign_memory" : "16000",
+      "novoalign_r1_adapter_trim" : "-a AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "novoalign_r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "novoalign_slots" : "1",
+      "novoalign_threads" : "-c 8",
+      "novoalign_threshold" : "null",
+      "novocraft_version" : "V2.07.15b",
+      "output_dir" : "seqware-results",
+      "picard_memory" : "3000",
+      "picard_slots" : "1",
+      "picard_threads" : "1",
+      "picardconvert" : "picard-tools-1.72/SamFormatConverter.jar",
+      "picardmerge_slots" : "1",
+      "picardrg" : "picard-tools-1.72/AddOrReplaceReadGroups.jar",
+      "picardsort" : "picard-tools-1.72/SortSam.jar",
+      "python" : "/oicr/local/sw/Python-2.7.2/bin/python2.7",
+      "queue" : "production",
+      "r1_adapter_trim" : "AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "rg_library" : "SCS_0008_nn_n_PE_300_WG",
+      "rg_platform" : "illumina",
+      "rg_sample_name" : "SCS_0008",
+      "run_ends" : "2",
+      "sequencer_run_name" : "120912_h804_0094_BD181GACXX,120912_h804_0094_BD181GACXX",
+      "tmp_dir" : "tmp",
+      "trim_mem_mb" : "16000",
+      "trim_min_length" : "10",
+      "trim_min_quality" : "20"
+    },
+    "files" : [ {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0008_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7135", "7495", "7496" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1070_7_1", "1130_7_2", "1130_8_2" ] ],
+        "sample.geo_template_id" : [ [ "21562" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_7" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "7" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -1560043158
+    }, {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0008_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7135", "7495", "7496" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1070_7_1", "1130_7_2", "1130_8_2" ] ],
+        "sample.geo_template_id" : [ [ "21562" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_7" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "7" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -2065601783
+    } ]
+  }, {
+    "workflowIni" : {
+      "barcode" : "NOINDEX,NOINDEX",
+      "bundled_jre" : "jre1.7.0_51",
+      "bundled_seqware" : "seqware-distribution-1.1.0-full.jar",
+      "colorspace" : "0",
+      "cutadapt" : "/oicr/local/analysis/sw/cutadapt/cutadapt-1.3/bin/cutadapt",
+      "cutadapt_r1_other_params" : "null",
+      "cutadapt_r2_other_params" : "null",
+      "data_dir" : "data",
+      "do_trim" : "false",
+      "fastq_inputs_end_1" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_8/Project_na/Sample_SWID_278111_SCS_0008_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278111_SCS_0008_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L008_R1_001.fastq.gz",
+      "fastq_inputs_end_2" : "/oicr/data/archive/seqware/seqware_analysis_5/sqwprod/results/seqware-0.10.0_IlluminaBaseCalling-1.8.2-1/99085265/Unaligned_120912_h804_0094_BD181GACXX_8/Project_na/Sample_SWID_278111_SCS_0008_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX/SWID_278111_SCS_0008_nn_n_PE_300_WG_120912_h804_0094_BD181GACXX_NoIndex_L008_R2_001.fastq.gz",
+      "fastq_validator" : "${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/2.2.1/bin/fastQValidator_0.1.1a/fastQValidator/bin/fastQValidator",
+      "fastq_validator_additional_parameters" : "--disableSeqIDCheck --minReadLen 0",
+      "ius_accession" : "278111,278111",
+      "lane" : "8,8",
+      "manual_output" : "false",
+      "metadata" : "metadata",
+      "novoalign_additional_parameters" : "-r ALL 5 -R 0 -o SAM",
+      "novoalign_expected_insert" : "-i PE 250,50",
+      "novoalign_index" : "-d ${workflow_bundle_dir}/Workflow_Bundle_GenomicAlignmentNovoalign/0.10.4/data/indexes/novoalign/hg19/hg19_random/hg19_random.nix",
+      "novoalign_input_format" : "",
+      "novoalign_memory" : "16000",
+      "novoalign_r1_adapter_trim" : "-a AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "novoalign_r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "novoalign_slots" : "1",
+      "novoalign_threads" : "-c 8",
+      "novoalign_threshold" : "null",
+      "novocraft_version" : "V2.07.15b",
+      "output_dir" : "seqware-results",
+      "picard_memory" : "3000",
+      "picard_slots" : "1",
+      "picard_threads" : "1",
+      "picardconvert" : "picard-tools-1.72/SamFormatConverter.jar",
+      "picardmerge_slots" : "1",
+      "picardrg" : "picard-tools-1.72/AddOrReplaceReadGroups.jar",
+      "picardsort" : "picard-tools-1.72/SortSam.jar",
+      "python" : "/oicr/local/sw/Python-2.7.2/bin/python2.7",
+      "queue" : "production",
+      "r1_adapter_trim" : "AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG",
+      "r2_adapter_trim" : "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
+      "rg_library" : "SCS_0008_nn_n_PE_300_WG",
+      "rg_platform" : "illumina",
+      "rg_sample_name" : "SCS_0008",
+      "run_ends" : "2",
+      "sequencer_run_name" : "120912_h804_0094_BD181GACXX,120912_h804_0094_BD181GACXX",
+      "tmp_dir" : "tmp",
+      "trim_mem_mb" : "16000",
+      "trim_min_length" : "10",
+      "trim_min_quality" : "20"
+    },
+    "files" : [ {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0008_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7135", "7495", "7496" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1070_7_1", "1130_7_2", "1130_8_2" ] ],
+        "sample.geo_template_id" : [ [ "21562" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_8" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "8" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -147425074
+    }, {
+      "studyTitle" : [ "SingleCellSeq" ],
+      "studyAttributes" : {
+        "study.geo_lab_group_id" : [ [ "138" ] ]
+      },
+      "experimentName" : [ "Geo_SingleCellSeq_ILLUMINA_WG_{F*101}{..}{R*101}" ],
+      "experimentAttributes" : { },
+      "sampleName" : [ "SCS_0008_nn_n_PE_300_WG" ],
+      "sampleAttributes" : {
+        "sample.geo_library_source_template_type" : [ [ "WG" ] ],
+        "sample.geo_reaction_id" : [ [ "7135", "7495", "7496" ] ],
+        "sample.geo_run_id_and_position_and_slot" : [ [ "1070_7_1", "1130_7_2", "1130_8_2" ] ],
+        "sample.geo_template_id" : [ [ "21562" ] ],
+        "sample.geo_template_type" : [ [ "Illumina PE Library Seq" ] ],
+        "sample.geo_tissue_origin" : [ [ "nn" ] ],
+        "sample.geo_tissue_type" : [ [ "n" ] ]
+      },
+      "sequencerRunName" : [ "120912_h804_0094_BD181GACXX" ],
+      "sequencerRunAttributes" : {
+        "sequencerrun.geo_instrument_run_id" : [ [ "1130" ] ]
+      },
+      "laneName" : [ "120912_h804_0094_BD181GACXX_lane_8" ],
+      "laneAttributes" : {
+        "lane.geo_lane" : [ [ "8" ] ]
+      },
+      "iusTag" : [ "NoIndex" ],
+      "iusAttributes" : { },
+      "workflowName" : [ "CASAVA-RTA" ],
+      "processingAlgorithm" : [ "BCLToFastq" ],
+      "processingAttributes" : { },
+      "fileMetaType" : [ "chemical/seq-na-fastq-gzip" ],
+      "fileAttributes" : { },
+      "fileId" : -652983699
+    } ]
+  } ]
+}
