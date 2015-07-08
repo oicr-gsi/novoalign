@@ -1,0 +1,18 @@
+{
+    "defaults": {
+        "description": "Novoalign workflow test",
+        "metrics_calculate": "calculate.sh",
+        "metrics_compare": "compare.sh",
+        "input_config_dir": "/.mounts/labs/PDE/data/RegressionTests/Novoalign/workflow/input_config/",
+        "output_metrics_dir": "/.mounts/labs/PDE/data/RegressionTests/Novoalign/workflow/output_expectation/"
+    },
+    "tests": [
+        {
+            "id": "workflow_V2.07.15b",
+            "parameters": {
+                "fastq_inputs_end_1": "/.mounts/labs/PDE/data/testdata/genomic/fastq/PCSI_0022_downsampled/PCSI0022C.val.1.fastq.gz,/.mounts/labs/PDE/data/testdata/genomic/fastq/PCSI_0022_downsampled/PCSI0022X.val.1.fastq.gz",
+                "fastq_inputs_end_2": "/.mounts/labs/PDE/data/testdata/genomic/fastq/PCSI_0022_downsampled/PCSI0022C.val.2.fastq.gz,/.mounts/labs/PDE/data/testdata/genomic/fastq/PCSI_0022_downsampled/PCSI0022X.val.2.fastq.gz"
+            }
+        }
+    ]
+}
