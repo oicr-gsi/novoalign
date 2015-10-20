@@ -72,6 +72,18 @@ novoalign_expected_insert |string     |Set the expected read type (e.g. PE), ins
 novoalign_input_format    |string     |Force quality score format, including -F flag, .e.g "-F STDFQ" [""]
 novoalign_additional_parameters|string|Any additional parameters to pass to Novoalign.["-R 0 -o SAM"]
 
+**CutAdapt configuration**
+
+Parameter           | Type   | Description
+----------          |------  |------------
+do_trim             |boolean | Whether or not to trim the read in the fasta [true]
+trim_min_quality    |integer | Minimum quality threshold for trimming
+trim_min_length     |integer | Minimum permissible length for reads
+r1_adapter_trim     |string  | adapter sequence to trim from read 1 [AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCG]
+r2_adapter_trim     |string  | adapter sequence to trim from read 2 [AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT]
+cutadapt_r1_other_params |string | Any other parameters to add to read 1 cutadapt command
+cutadapt_r2_other_params | string | Any other parameters to add to read 2 cutadapt command
+
 **Memory/HPC configuration**
 
 Parameter           | Type   | Description
@@ -82,6 +94,7 @@ novoalign_slots|int|The number of slots to allocate on the cluster node running 
 picard_threads|int|The number of threads to give to Picard. [1]
 picard_slots|int|The number of slots to allocate on the cluster node running Picard. [1]
 picard_memory|int|The amount of memory to allocate to the cluster node running Picard [3000]
+trim_mem_mb|int|The amount of memory to allocate to the cluster node running cutadapt [16000]
 queue|string|The queue to submit to in SGE [production]
 
 **Input/output**
