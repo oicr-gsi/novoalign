@@ -1,3 +1,6 @@
+## 2.2.3 - 2015-10-20
+- FIXED GP-552 Novoalign workflow makes symlink to license dir instead of license file
+
 ## 2.2.2 - 2015-07-03
 - GP-360 Polish Novoalign for release
 
