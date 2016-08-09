@@ -1,4 +1,4 @@
-## 2.3.001
+## 2.2.001
 - special version to with unlicensed Novoalign, no fastq.gz or multithreading
 
 ## 2.2.3 - 2015-10-20
