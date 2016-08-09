@@ -1,3 +1,6 @@
+## 2.3.001
+- special version to with unlicensed Novoalign, no fastq.gz or multithreading
+
 ## 2.2.3 - 2015-10-20
 - FIXED GP-552 Novoalign workflow makes symlink to license dir instead of license file
 

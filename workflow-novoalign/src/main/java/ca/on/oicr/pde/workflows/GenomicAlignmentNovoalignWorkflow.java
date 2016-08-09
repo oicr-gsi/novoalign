@@ -126,12 +126,12 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
 		Job trimJob=null;
 		String r1=this.fastq_inputs_end_1[i].getProvisionedPath();
 		String r2=this.fastq_inputs_end_2[i].getProvisionedPath();
-		String basename1 = r1.substring(r1.lastIndexOf("/")+1,r2.lastIndexOf(".fastq.gz"));
-		String basename2 = r2.substring(r2.lastIndexOf("/")+1,r2.lastIndexOf(".fastq.gz"));
+		String basename1 = r1.substring(r1.lastIndexOf("/")+1,r2.lastIndexOf(".fastq"));
+		String basename2 = r2.substring(r2.lastIndexOf("/")+1,r2.lastIndexOf(".fastq"));
 
 		if (Boolean.valueOf(getProperty("do_trim"))) {
-			String trim1=basename1+".trim.fastq.gz";
-			String trim2=basename2+".trim.fastq.gz";
+			String trim1=basename1+".trim.fastq";
+			String trim2=basename2+".trim.fastq";
 			trimJob = doTrim(r1,r2,trim1,trim2);
 			r1=trim1;
 			r2=trim2;
