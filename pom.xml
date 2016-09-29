@@ -6,7 +6,7 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <modules>
-        <module>decider-novoalign</module>
+        <!--module>decider-novoalign</module-->
         <module>workflow-novoalign</module>
     </modules>
     <properties>
