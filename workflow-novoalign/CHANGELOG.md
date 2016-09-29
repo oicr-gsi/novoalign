@@ -1,4 +1,4 @@
-##2.2.4 - 2016-09-28
+##2.3 - 2016-09-28
 -GP-927 Update Novoalign workflow with unlicensed version
 
 ## 2.2.3 - 2015-10-20
