@@ -126,7 +126,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
 		Job trimJob=null;
 		String r1=this.fastq_inputs_end_1[i].getProvisionedPath();
 		String r2=this.fastq_inputs_end_2[i].getProvisionedPath();
-		String basename1 = r1.substring(r1.lastIndexOf("/")+1,r2.lastIndexOf(".fastq.gz"));
+		String basename1 = r1.substring(r1.lastIndexOf("/")+1,r1.lastIndexOf(".fastq.gz"));
 		String basename2 = r2.substring(r2.lastIndexOf("/")+1,r2.lastIndexOf(".fastq.gz"));
 
 		if (Boolean.valueOf(getProperty("do_trim"))) {
@@ -137,6 +137,9 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
 			r2=trim2;
 		}
 
+                String f1 = r1.substring(0,r1.lastIndexOf(".gz"));
+                String f2 = r2.substring(0,r2.lastIndexOf(".gz"));
+                
 		Job confirmFastq1Job = workflow.createBashJob("confirmFastqFileRead1_"+i);
 		confirmFastq1Job.getCommand().addArgument(getProperty("fastq_validator"));
 		confirmFastq1Job.getCommand().addArgument("--file "+r1);
@@ -152,7 +155,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
 		String readgroup = "-o SAM $'@RG\\tID:"+runlanebarcode+"\\tPU:"+runlanebarcode+"\\tLB:"+getProperty("rg_library")+"\\tSM:"+getProperty("rg_sample_name")+"\\tPL:"+getProperty("rg_platform")+"'";
 
 		Job job_novo=null;
- 		String files = "-f "+r1;
+ 		String files = "-f "+f1;
 		String adapters="-a "+getProperty("r1_adapter_trim");
 		String insert="";
             	if (this.runEnds == 2) {
@@ -167,7 +170,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
 			job_novo = workflow.createBashJob("novoalign_" + i);
 			job_novo.addParent(confirmFastq2Job);
 
-			files+=" " +r2;
+			files+=" " +f2;
 			adapters+=" " +getProperty("r2_adapter_trim");
 			insert= getProperty("novoalign_expected_insert");
 		}
@@ -176,6 +179,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
 		}
 	      	///Novoalign align and add read groups
 	      	Command command = job_novo.getCommand();
+                command.addArgument("zcat " + r1 + " > " + f1 + ";zcat " + r2 + " > " + f2 + ";");
               	command.addArgument(getWorkflowBaseDir() + "/bin/novocraft" + this.novocraftVersion + "/novoalign ");
 		command.addArgument(insert);
                 command.addArgument(files).addArgument(adapters);

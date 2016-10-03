@@ -1,6 +1,6 @@
 ##NovoAlign workflow
 
-Version 2.2.3
+Version 2.3
 
 ###Overview
 
@@ -13,7 +13,6 @@ Uses gzipped paired-end fastq files to produce [BAM](http://samtools.github.io/h
 This workflow requires:
 
 * [SeqWare](http://seqware.github.io/)
-* A [NovoAlign](http://www.novocraft.com/products/novoalign/) license. Although it is theoretically possible to use without, we've never tried it.
 * A Novoalign reference index for versions 2.07.15b or 3.02.04 (the bundled versions)
 
 If you would like to use trimming, the following also must be installed:
@@ -26,14 +25,12 @@ For testing purposes, some simulated data is available here: http://labs.oicr.on
 
 Without trimming and novoalign 2:
 
-    mvn clean install -Dnovoalign2-index=/path/to/novoalign2/hg19.nix \
-                      -Dnovoalign-license=/path/to/novoalign.lic
+    mvn clean install -Dnovoalign2-index=/path/to/novoalign2/hg19.nix 
 
 
 With trimming and novoalign 2:
 
     mvn clean install -Dnovoalign2-index=/path/to/novoalign2/hg19.nix \
-                      -Dnovoalign-license=/path/to/novoalign.lic      \
                       -Dcutadapt-path=/path/to/bin/cutadapt           \
                       -Dpython-path=/path/to/bin/python2.7
 
@@ -88,7 +85,7 @@ cutadapt_r2_other_params | string | Any other parameters to add to read 2 cutada
 
 Parameter           | Type   | Description
 ----------          |------  |------------
-novoalign_threads|string|The number of threads to give to Novoalign as well as the flag -c. Set to "" for no threading. ["-c 8"]
+novoalign_threads|string|The number of threads to give to Novoalign as well as the flag -c. Set to "" for no threading. [""]
 novoalign_memory|int|The amount of memory to give to the cluster node running Novoalign in MB. [24000]
 novoalign_slots|int|The number of slots to allocate on the cluster node running Novoalign. [1]
 picard_threads|int|The number of threads to give to Picard. [1]

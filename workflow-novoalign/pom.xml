@@ -11,7 +11,7 @@
 
     <groupId>ca.on.oicr.pde.workflows</groupId>
     <artifactId>GenomicAlignmentNovoalign</artifactId>
-    <version>2.2.3</version>
+    <version>2.3</version>
     <packaging>jar</packaging>
 
     <name>${display-name}</name>
@@ -28,7 +28,6 @@
         <python-path>/oicr/local/sw/Python-2.7.2/bin/python2.7</python-path>
         <novoalign2-index>/oicr/data/reference/genomes/homo_sapiens_mc/UCSC/hg19_random/Genomic/novocraft/2.07.15b/hg19_random.nix</novoalign2-index>
         <novoalign3-index>/oicr/data/reference/genomes/homo_sapiens_mc/UCSC/hg19_random/Genomic/novocraft/3.02.04/hg19_random.nix</novoalign3-index>
-        <novoalign-license>/.mounts/labs/PDE/private/novocraft.lic/novoalign.lic</novoalign-license>
     </properties>
 
     <dependencies>
@@ -60,28 +59,12 @@
             <type>zip</type>
             <scope>provided</scope>
         </dependency> 
+	<dependency>
+        	<groupId>ca.on.oicr.pde</groupId>
+        	<artifactId>common-utilities</artifactId>
+        	<version>1.6.5</version>
+        	<scope>test</scope>
+	</dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.pyx4j</groupId>
-                <artifactId>maven-junction-plugin</artifactId>
-                <configuration>
-                    <links>
-                        <!--link up the licenses next to the executables-->
-                        <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign3-version}/novoalign.lic</dst>
-                            <src>${novoalign-license}</src>
-                        </link>
-                        <link>
-                            <dst>${project.build.directory}/Workflow_Bundle_${project.artifactId}_${project.version}_SeqWare_${seqware-version}/Workflow_Bundle_${project.artifactId}/${project.version}/bin/novocraft${novoalign2-version}/novoalign.lic</dst>
-                            <src>${novoalign-license}</src>
-                        </link>
-                    </links>
-                </configuration>
-            </plugin> 
-        </plugins>
-    </build>
 
 </project>
