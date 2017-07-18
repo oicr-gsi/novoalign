@@ -211,20 +211,10 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
                 	job_novo.setQueue(this.queue);
               	}
                           
-	      	///Sort SAM, create the bam and bam index
-		//Job jobBam = workflow.createBashJob("PicardSortSamMakeBam_"+i);
-//		command = jobBam.getCommand();
-//	      	command.addArgument(getWorkflowBaseDir() + "/bin/" + getProperty("bundled_jre") + "/bin/java ");
-//		command.addArgument("-Xmx" + getProperty("picard_memory")+"M");
-//		command.addArgument("-jar " +  getWorkflowBaseDir() + "/bin/" + getProperty("picardsort"));
-//		command.addArgument("INPUT="+this.dataDir + localOutputSamFilePaths[i]);
-//		command.addArgument("OUTPUT=" + this.dataDir + localOutputBamFilePaths[i]);
-//		command.addArgument("SORT_ORDER=coordinate VALIDATION_STRINGENCY=SILENT CREATE_INDEX=true");
-//		command.addArgument("TMP_DIR=" + getProperty("tmp_dir"));
-//	      	jobBam.addParent(job_novo);
-//	      	jobBam.setMaxMemory((Integer.valueOf(getProperty("picard_memory")) *2)+"");
           }
         
 
     }
+
+//FIXME
 }
