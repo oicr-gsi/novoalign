@@ -28,6 +28,7 @@
 package ca.on.oicr.pde.workflows;
 
 import ca.on.oicr.pde.utilities.workflows.OicrWorkflow;
+import java.io.File;
 import java.util.Map;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Command;
 import net.sourceforge.seqware.pipeline.workflowV2.model.Job;
@@ -38,12 +39,15 @@ import net.sourceforge.seqware.pipeline.workflowV2.model.Workflow;
  * @author pruzanov, mtaschuk
  */
 public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
-    //private String finalOutDir;
+    
+    private static final String DATA_DIR="data_dir";
+    private static final String BIN_DIR="bin";
+    
     private String dataDir;
     private String queue;
     private int runEnds;
-    private SqwFile [] fastq_inputs_end_1;
-    private SqwFile [] fastq_inputs_end_2;
+    private SqwFile [] fastqInputsEnd1;
+    private SqwFile [] fastqInputsEnd2;
     private String [] iusAccessions;
     private String [] sequencerRunNames;
     private String [] lanes;
@@ -66,14 +70,14 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
         this.novocraftVersion = getProperty("novocraft_version");
        	manualOutput = Boolean.valueOf(getProperty("manual_output"));
 	
-	fastq_inputs_end_1 = provisionInputFiles("fastq_inputs_end_1");
-	fastq_inputs_end_2 = provisionInputFiles("fastq_inputs_end_2"); 
+	fastqInputsEnd1 = provisionInputFiles("fastq_inputs_end_1");
+	fastqInputsEnd2 = provisionInputFiles("fastq_inputs_end_2"); 
 
        
        //Set up outputs
-       localOutputBamFilePaths = new String[this.fastq_inputs_end_1.length];
-       localOutputBaiFilePaths = new String[this.fastq_inputs_end_1.length];
-       localOutputLogFilePaths = new String[this.fastq_inputs_end_1.length];
+       localOutputBamFilePaths = new String[this.fastqInputsEnd1.length];
+       localOutputBaiFilePaths = new String[this.fastqInputsEnd1.length];
+       localOutputLogFilePaths = new String[this.fastqInputsEnd1.length];
        for (int b = 0; b < localOutputBamFilePaths.length; b++) {
        		localOutputBamFilePaths[b] = "SWID_" + this.iusAccessions[b] + "_" 
              	+ getProperty("rg_library") + "_" + this.sequencerRunNames[b] + "_" + this.barcodes[b] 
@@ -87,8 +91,8 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
     
     @Override
     public void setupDirectory() {
-         this.dataDir = getProperty("data_dir").endsWith("/") ? getProperty("data_dir") : getProperty("data_dir") + "/";
-         this.addDirectory(getProperty("data_dir"));
+         this.dataDir = getProperty(DATA_DIR).endsWith(File.separator) ? getProperty(DATA_DIR) : getProperty(DATA_DIR) + "/";
+         this.addDirectory(getProperty(DATA_DIR));
     }
     
     
@@ -96,7 +100,8 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
 	Job cutAdaptJob = this.getWorkflow().createBashJob("cutAdapt");
 	Command command = cutAdaptJob.getCommand();
 
-	command.addArgument(getWorkflowBaseDir() + "/bin/"+getProperty("bundled_jre")+"/bin/java");
+	command.addArgument(getWorkflowBaseDir() + File.separator+BIN_DIR+
+                File.separator+getProperty("bundled_jre")+"/bin/java");
 	command.addArgument("-Xmx500M");
 	command.addArgument("-cp "+getWorkflowBaseDir() + "/classes:"+getWorkflowBaseDir() + "/lib/"+getProperty("bundled_seqware"));
 	command.addArgument("net.sourceforge.seqware.pipeline.runner.PluginRunner -p net.sourceforge.seqware.pipeline.plugins.ModuleRunner -- ");
@@ -120,14 +125,15 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
     @Override
     public void buildWorkflow() {
 	Workflow workflow = this.getWorkflow();
-        String[] srn=getProperty("sequencer_run_name").split(","), lanes=getProperty("lane").split(","), barcodes=getProperty("barcode").split(",");
-        for (int i = 0; i < this.fastq_inputs_end_1.length; i++) {
+        final String WORKFLOW_BIN=getWorkflowBaseDir() + File.separator+BIN_DIR+File.separator;
+        String[] srn=getProperty("sequencer_run_name").split(","), llanes=getProperty("lane").split(","), lbarcodes=getProperty("barcode").split(",");
+        for (int i = 0; i < this.fastqInputsEnd1.length; i++) {
 
 		Job trimJob=null;
-		String r1=this.fastq_inputs_end_1[i].getProvisionedPath();
-		String r2=this.fastq_inputs_end_2[i].getProvisionedPath();
-		String basename1 = r1.substring(r1.lastIndexOf("/")+1,r1.lastIndexOf(".fastq.gz"));
-		String basename2 = r2.substring(r2.lastIndexOf("/")+1,r2.lastIndexOf(".fastq.gz"));
+		String r1=this.fastqInputsEnd1[i].getProvisionedPath();
+		String r2=this.fastqInputsEnd2[i].getProvisionedPath();
+		String basename1 = r1.substring(r1.lastIndexOf('/')+1,r1.lastIndexOf(".fastq.gz"));
+		String basename2 = r2.substring(r2.lastIndexOf('/')+1,r2.lastIndexOf(".fastq.gz"));
 
 		if (Boolean.valueOf(getProperty("do_trim"))) {
 			String trim1=basename1+".trim.fastq.gz";
@@ -151,7 +157,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
 
         	
 		//The correct format for this is using all underscores, NOT hypens
-		String runlanebarcode=srn[i]+"_"+lanes[i]+"_"+barcodes[i];
+		String runlanebarcode=srn[i]+"_"+llanes[i]+"_"+lbarcodes[i];
 		String readgroup = "-o SAM $'@RG\\tID:"+runlanebarcode+"\\tPU:"+runlanebarcode+"\\tLB:"+getProperty("rg_library")+"\\tSM:"+getProperty("rg_sample_name")+"\\tPL:"+getProperty("rg_platform")+"'";
 
 		Job job_novo=null;
@@ -180,7 +186,7 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
 	      	///Novoalign align and add read groups
 	      	Command command = job_novo.getCommand();
                 command.addArgument("zcat " + r1 + " > " + f1 + ";zcat " + r2 + " > " + f2 + ";");
-              	command.addArgument(getWorkflowBaseDir() + "/bin/novocraft" + this.novocraftVersion + "/novoalign ");
+              	command.addArgument(WORKFLOW_BIN+"novocraft" + this.novocraftVersion + "/novoalign ");
 		command.addArgument(insert);
                 command.addArgument(files).addArgument(adapters);
 		command.addArgument(getProperty("novoalign_index"));
@@ -189,10 +195,10 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
 		command.addArgument(readgroup);
 		command.addArgument(getOptionalProperty("novoalign_additional_parameters",""));
 		command.addArgument(" 2> "+this.dataDir + localOutputLogFilePaths[i] + " | ");
-		command.addArgument("perl " +getWorkflowBaseDir() + "/bin/checkBamFile.pl | ");
-		command.addArgument(getWorkflowBaseDir() + "/bin/" + getProperty("bundled_jre") + "/bin/java ");
+		command.addArgument("perl " +WORKFLOW_BIN+"checkBamFile.pl | ");
+		command.addArgument(WORKFLOW_BIN + getProperty("bundled_jre") + "/bin/java ");
                 command.addArgument("-Xmx" + getProperty("picard_memory")+"M");
-                command.addArgument("-jar " +  getWorkflowBaseDir() + "/bin/" + getProperty("picardsort"));
+                command.addArgument("-jar " +  WORKFLOW_BIN + getProperty("picardsort"));
                 command.addArgument("INPUT=/dev/stdin");
                 command.addArgument("OUTPUT=" + this.dataDir + localOutputBamFilePaths[i]);
                 command.addArgument("SORT_ORDER=coordinate VALIDATION_STRINGENCY=SILENT CREATE_INDEX=true");
@@ -215,6 +221,4 @@ public class GenomicAlignmentNovoalignWorkflow extends OicrWorkflow {
         
 
     }
-
-//FIXME
 }
