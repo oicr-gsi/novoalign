@@ -1,3 +1,6 @@
+This workflow is deprecated. We now prefer [BWA aligner](https://github.com/oicr-gsi/bwa).
+
+
 # NovoAlign 
 
 This [SeqWare](http://seqware.github.io/) workflow aligns paired-end gzipped fastq files into BAM files using [NovoAlign](http://www.novocraft.com/products/novoalign/). 
